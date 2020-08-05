@@ -1,0 +1,241 @@
+/**
+Description: Produit détails CSS
+Version: 1.0.0
+Last update: YYYY/MM/DD
+Author: User Name <contact@sebastientraber.com>
+ 
+Summary:
+ 
+0. SECTION PRODUIT ACTUEL
+    - 0.1. images display
+    - 0.2. informations
+    - 0.3. ajouter au panier
+1. VOUS AIMEREZ AUSSI          
+*/
+
+/* ==========================================================================
+ 0. SECTION PRODUIT ACTUEL
+========================================================================== */
+
+#section1 {
+    max-width: 1180px;
+    margin: 40px auto 0 auto;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-areas:
+        "pro_img pro_img pro_img pro_img pro_img pro_content pro_content pro_content pro_content pro_content pro_content pro_content pro_content pro_content pro_content";
+}
+
+/* 0.1. images display
+========================================================================== */
+
+#produit_images {
+    grid-area: pro_img;
+}
+
+#img_showcase {
+    width: 100%;
+    height: 380px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#get_image_details {
+    display: flex;
+    justify-content: center;
+}
+
+#get_image_details label {
+    margin: 0 10px 0 10px;
+}
+
+#get_image_details label:nth-child(2) {
+    margin: 0 10px 0 0 !important;
+}
+
+#get_image_details label:last-child {
+    margin: 0 0 0 10px !important;
+}
+
+#get_image_details div {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: content-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.div_transparent {
+
+    margin: 0 !important;
+}
+
+#get_image_details #radio_1:checked~.radio_label1 div div,
+#get_image_details #radio_2:checked~.radio_label2 div div,
+#get_image_details #radio_3:checked~.radio_label3 div div,
+#get_image_details #radio_4:checked~.radio_label4 div div,
+#get_image_details #radio_5:checked~.radio_label5 div div,
+#get_image_details #radio_6:checked~.radio_label6 div div {
+    background-color: var(--blue50Percent);
+    box-sizing: border-box;
+    border: 2px solid var(--blue);
+}
+
+
+/* 0.2. informations 
+========================================================================== */
+
+#produit_content {
+    grid-area: pro_content;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-areas:
+        "pro_title pro_title pro_title pro_title pro_title pro_title . . . ."
+        "pro_info pro_info pro_info pro_info pro_info pro_info pro_panier pro_panier pro_panier pro_panier";
+}
+
+#produit_title {
+    grid-area: pro_title;
+}
+
+#produit_title h2 {
+    font-size: 20pt;
+    font-weight: 700;
+    color: var(--dark_blue);
+}
+
+#marque {
+    font-size: 17pt;
+    margin: 10px 0;
+}
+
+#produit_info {
+    grid-area: pro_info;
+    border-top: 2px solid var(--blue);
+}
+
+#produit_info h3 {
+    font-size: 16pt;
+    font-weight: 700;
+    margin: 20px 0;
+    color: var(--dark_blue);
+    padding: 0;
+}
+
+#produit_info li {
+    padding-bottom: 10px;
+}
+
+/* 0.3. ajouter au panier 
+========================================================================== */
+
+#produit_panier {
+    grid-area: pro_panier;
+    border: 2px solid var(--blue);
+    height: fit-content;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "prix prix prix rabais"
+        "btnA btnB btnB ."
+        ". dispo dispo .";
+}
+
+#prix {
+    grid-area: prix;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#prix p {
+    padding-bottom: 10px;
+}
+
+#prix p:first-child {
+    font-size: 20pt;
+    font-weight: 700;
+}
+
+#prix p:last-child {
+    font-size: 12pt;
+    font-weight: 700;
+}
+
+input[type="number"] {
+    grid-area: btnA;
+    width: 43px;
+    border: 2px solid var(--blue);
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+input[type="submit"] {
+    grid-area: btnB;
+    background-color: var(--blue);
+    font-size: 15px;
+    color: white;
+    font-weight: 700;
+    align-items: center;
+    display: flex;
+    height: 28px;
+    padding: 0 auto !important;
+    border: none;
+    border-radius: 5px;
+}
+
+.div_dispo {
+    grid-area: dispo;
+    margin-bottom: 10px;
+}
+
+.div_dispo div {
+    width: 12px !important;
+}
+
+#produit_panier div:not(#div_rabais) {
+    width: 100%;
+}
+
+#div_rabais {
+    background-color: var(--blue);
+    grid-area: rabais;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 0 5px;
+}
+
+#rabais {
+    color: white;
+    font-size: 18pt;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* ==========================================================================
+     1. VOUS AIMEREZ AUSSI
+========================================================================== */
+
+#section2 {
+    max-width: 1180px;
+    margin: 0 auto 40px auto;
+}
+
+#section2 h2 {
+    font-size: 18pt;
+    font-weight: 700;
+    color: var(--blue);
+    margin: 40px 0 10px 0;
+}

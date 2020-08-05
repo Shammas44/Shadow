@@ -1,0 +1,424 @@
+/**
+Description: Footer CSS
+Version: 1.0.0
+Last update: YYYY/MM/DD
+Author: User Name <contact@sebastientraber.com>
+
+Summary:
+
+0. FOOTER-DIV1
+    - 0.1. newsletter
+    - 0.2. résaux sociaux
+        - 0.2.1. facebook
+        - 0.2.2. twitter
+        - 0.2.3. instagram
+        - 0.2.4. pinterest
+    - 0.3. contact
+    - 0.4. payement
+        - 0.4.1. visa
+        - 0.4.2. mastercard
+        - 0.4.3. maestro
+        - 0.4.4. paypal
+        - 0.4.5. poste
+1. FOOTER-DIV2          
+*/
+
+footer {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 5;
+    background-color: var(--dark_blue);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+0. FOOTER-DIV1
+========================================================================== */
+.footer-div1 {
+    display: grid;
+    height: 294px;
+    justify-content: center;
+    grid-template-columns: repeat(15, 60px);
+    column-gap: 20px;
+    grid-template-areas:
+        "social social social social . news news news news news . contact contact contact contact"
+        "payement payement payement payement payement payement payement payement payement payement payement payement payement payement payement";
+}
+
+.footerTitle {
+    padding: 20px 0 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    height: 60px;
+    color: white;
+}
+
+/* 0.1. newsletter
+========================================================================== */
+#newsletter {
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(5, 60px);
+    grid-column-gap: 20px;
+    grid-area: news;
+    grid-template-areas:
+        "newsTitle newsTitle newsTitle newsTitle newsTitle"
+        "newsForm newsForm newsForm newsForm newsForm"
+        "newsP newsP newsP newsP newsP";
+}
+
+#newsletter form {
+    display: flex;
+    text-align: center;
+    grid-area: newsForm;
+    margin-top: 10px;
+}
+
+#newsletter input {
+    height: 47px;
+    width: calc(100% - 47px);
+    box-sizing: border-box;
+    grid-area: newsInput;
+    @include searchbar_style;
+}
+
+#newsletter button {
+    height: 47px;
+    width: 47px;
+    position: relative;
+    border-radius: 0 7px 7px 0;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    cursor: pointer;
+    @include button_style;
+
+    &::after {
+        content: "";
+        position: absolute;
+        $width: 32px;
+        width: $width;
+        height: $width;
+        background: url(../../images/spritesheet2.svg) -2*$width -4*$width;
+        background-size: 7*$width;
+        left: (47px - $width)/2;
+        top: (47px - $width)/2;
+    }
+}
+
+#newsletter p:not(.footerTitle) {
+    font-size: 9px;
+    color: white;
+    grid-area: newsP;
+}
+
+#newsletter .footerTitle {
+    grid-area: newsTitle;
+}
+
+/* 0.2. résaux sociaux
+========================================================================== */
+.socialMedia {
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(4, 60px);
+    grid-column-gap: 20px;
+    grid-area: social;
+    grid-template-areas:
+        "smTitle smTitle smTitle smTitle"
+        "facebook twitter instagram pinterest";
+}
+
+.socialMedia a {
+    height: 60px;
+}
+
+.socialMedia a img {
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+    background-repeat: no-repeat !important;
+    background-size: 280px !important;
+}
+
+.socialMedia a img:hover {
+    animation-name: pulse;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    transition: transform 0.1s linear;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1.1, 1.1);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+/* 0.2.1. facebook
+====================================== */
+.socialMedia a:nth-child(2) img {
+    background: url(../../images/spritesheet.svg) 0 0;
+}
+
+.socialMedia a:nth-child(2) img:hover {
+    background: url(../../images/spritesheet.svg) 0 -60px;
+}
+
+/* 0.2.2. twitter
+====================================== */
+.socialMedia a:nth-child(3) img {
+    background: url(../../images/spritesheet.svg) -60px 0;
+}
+
+.socialMedia a:nth-child(3) img:hover {
+    background: url(../../images/spritesheet.svg) -60px -60px;
+}
+
+/* 0.2.3. instagrame
+====================================== */
+.socialMedia a:nth-child(4) img {
+    background: url(../../images/spritesheet.svg) -120px 0;
+}
+
+.socialMedia a:nth-child(4) img:hover {
+    background: url(../../images/spritesheet.svg) -120px -60px;
+}
+
+/* 0.2.4. pinterest
+====================================== */
+.socialMedia a:nth-child(5) img {
+    background: url(../../images/spritesheet.svg) -180px 0;
+}
+
+.socialMedia a:nth-child(5) img:hover {
+    background: url(../../images/spritesheet.svg) -180px -60px;
+}
+
+.socialMedia .footerTitle {
+    grid-area: smTitle;
+}
+
+.socialMedia:nth-child(2) {
+    grid-area: facebook;
+}
+
+.socialMedia:nth-child(3) {
+    grid-area: twitter;
+}
+
+.socialMedia:nth-child(4) {
+    grid-area: instagram;
+}
+
+.socialMedia:nth-child(5) {
+    grid-area: pinterest;
+}
+
+/* 0.3. contact
+========================================================================== */
+.contact {
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(4, 60px);
+    grid-column-gap: 20px;
+    grid-area: contact;
+    grid-template-areas:
+        "contactTitle contactTitle contactTitle contactTitle"
+        "contactP contactP contactP contactP"
+        "contactLink contactLink contactLink contactLink";
+}
+
+.contact .footerTitle {
+    grid-area: contactTitle;
+}
+
+.contact p:not(.footerTitle) {
+    font-size: 12px;
+    text-align: left;
+    color: white;
+    grid-area: contactP;
+}
+
+.contact a {
+    font-size: 12px;
+    text-align: left;
+    text-decoration: underline;
+    color: white;
+    grid-area: contactLink;
+}
+
+/* 0.4. payement
+========================================================================== */
+.payement {
+    display: grid;
+    align-items: center;
+    text-align: center;
+    color: white;
+    grid-template-columns: repeat(15, 60px);
+    grid-column-gap: 20px;
+    grid-area: payement;
+    grid-template-areas:
+        "payementP payementP payementP payementP . visa visa mastercard mastercard maestro maestro paypal paypal post post";
+}
+
+.payement p {
+    font-size: 17px;
+    text-align: left;
+    grid-area: payementP;
+}
+
+.payement img {
+    height: 90px;
+    width: 140px;
+    border-radius: 5px;
+    background-repeat: no-repeat !important;
+    background-size: 280px !important;
+}
+
+.payement img:hover {
+    animation-name: pulse;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    transition: transform 0.1s linear;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* 0.4.1. visa
+====================================== */
+.payement a:nth-child(2) {
+    grid-area: visa;
+}
+
+.payement a:nth-child(2) img {
+    background: url(../../images/spritesheet.svg) 0 -120px;
+}
+
+.payement a:nth-child(2) img:hover {
+    background: url(../../images/spritesheet.svg) var(--blue);
+    background-position: 0 -210px;
+}
+
+/* 0.4.2. mastercard
+====================================== */
+.payement a:nth-child(3) {
+    grid-area: mastercard;
+}
+
+.payement a:nth-child(3) img {
+    background: url(../../images/spritesheet.svg) 0 -300px;
+}
+
+.payement a:nth-child(3) img:hover {
+    background: url(../../images/spritesheet.svg) var(--blue);
+    background-position: 0 -390px;
+}
+
+/* 0.4.3. maestro
+====================================== */
+.payement a:nth-child(4) {
+    grid-area: maestro;
+}
+
+.payement a:nth-child(4) img {
+    background: url(../../images/spritesheet.svg) -140px -120px;
+}
+
+.payement a:nth-child(4) img:hover {
+    background: url(../../images/spritesheet.svg) var(--blue);
+    background-position: -140px -210px;
+}
+
+/* 0.4.4. paypal
+====================================== */
+.payement a:nth-child(5) {
+    grid-area: paypal;
+}
+
+.payement a:nth-child(5) img {
+    background: url(../../images/spritesheet.svg) -140px -300px;
+}
+
+.payement a:nth-child(5) img:hover {
+    background: url(../../images/spritesheet.svg) var(--blue);
+    background-position: -140px -390px;
+}
+
+/* 0.4.5. poste
+====================================== */
+.payement a:nth-child(6) {
+    grid-area: post;
+}
+
+.payement a:nth-child(6) img {
+    background: url(../../images/spritesheet.svg) 0 -480px;
+}
+
+.payement a:nth-child(6) img:hover {
+    background: url(../../images/spritesheet.svg) var(--blue);
+    background-position: -140px -480px;
+}
+
+.payement a {
+    width: 100%;
+}
+
+/* ==========================================================================
+1. FOOTER-DIV2
+========================================================================== */
+.footer-div2 {
+    display: grid;
+    height: 56px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blue);
+    grid-template-columns: repeat(15, 60px);
+    column-gap: 20px;
+    grid-template-areas:
+        "copyright copyright copyright copyright . lawA lawA lawB lawB lawC lawC lawC lawD lawD lawD";
+    order: 1;
+}
+
+.footer-div2 p,
+.footer-div2 a {
+    font-size: 12px;
+    text-align: center;
+    color: white;
+}
+
+.footer-div2 a {
+    text-decoration: underline;
+}
+
+.footer-div2 p {
+    grid-area: copyright;
+}
+
+.footer-div2 a:nth-child(2) {
+    grid-area: lawA;
+}
+
+.footer-div2 a:nth-child(3) {
+    grid-area: lawB;
+}
+
+.footer-div2 a:nth-child(4) {
+    grid-area: lawC;
+}
+
+.footer-div2 a:nth-child(5) {
+    grid-area: lawD;
+}

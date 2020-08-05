@@ -1,0 +1,427 @@
+/**
+Description: Header CSS
+Version: 1.0.0
+Last update: YYYY/MM/DD
+Author: User Name <contact@sebastientraber.com>
+
+Summary:
+
+0. HEADER-DIV1
+    - 0.1. searchbar
+    - 0.2. button panier
+    - 0.3. utilisateur
+    - 0.4. button retour
+1. HEADER-DIV2
+    - 1.1. avantages
+2. HEADER-DIV3
+    - 2.1. menu   
+*/
+
+header {
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+
+/* ==========================================================================
+   0. HEADER-DIV1
+========================================================================== */
+.header-div1 {
+    display: grid;
+    height: 95px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark_blue);
+    grid-template-columns: repeat(15, 60px);
+    grid-column-gap: 20px;
+    grid-template-areas: "logo logo logo sbar sbar sbar sbar sbar sbar sbar sbar panier panier utilisateur utilisateur";
+}
+
+.header2-div1 {
+    display: grid;
+    height: 95px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark_blue);
+    grid-template-columns: repeat(15, 60px);
+    grid-column-gap: 20px;
+    grid-template-areas: "logo logo logo . . . . . . retour retour retour retour utilisateur utilisateur";
+}
+
+h1 {
+    margin: auto 0px;
+    grid-area: logo;
+}
+
+/* 0.1. searchbar
+========================================================================== */
+.searchContainer {
+    margin: auto 0px;
+    grid-area: sbar;
+
+    input {
+        height: 47px;
+        width: 573px;
+        @include searchbar_style;
+    }
+
+    button {
+        height: 47px;
+        width: 47px;
+        margin: auto 0px;
+        position: relative;
+        border: none;
+        border-radius: 0px 7px 7px 0px;
+        cursor: pointer;
+        float: right;
+        @include button_style;
+
+        &:active {
+            box-shadow: none;
+            border-bottom: none;
+        }
+
+        &::after {
+            $width: 32px;
+            height: $width;
+            width: $width;
+            position: absolute;
+            top: 7px;
+            left: 7px;
+            background: url('../../images/spritesheet2.svg') -5*$width -2*$width;
+            background-size: 7*$width;
+            content: "";
+        }
+    }
+
+    .imgLoupe {
+        display: block;
+    }
+}
+
+/* 0.2. Button panier
+========================================================================== */
+.btnPanier {
+    display: flex;
+    height: 47px;
+    width: 100%;
+    margin: auto 0px;
+    position: relative;
+    border-radius: 7px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    grid-area: panier;
+    cursor: pointer;
+    @include button_style;
+
+    &:active {
+        box-shadow: none;
+        border-bottom: none;
+        border-top: none;
+    }
+
+    .btnPanier-prix {
+        width: 70%;
+        margin: auto 0;
+        padding: 0 0 0 10px;
+        position: relative;
+        font-size: 14px;
+        font-weight: var(--font_bold);
+        color: var(--dark);
+
+        &::after {
+            $width: 32px;
+            height: $width;
+            width: $width;
+            position: absolute;
+            top: -7px;
+            right: -30px;
+            background: url('../../images/spritesheet2.svg') -6*$width -2*$width;
+            background-size: 7*$width;
+            content: "";
+        }
+    }
+
+    .nbrPanier {
+        display: inline-block;
+        height: 26px;
+        width: 26px;
+        position: absolute;
+        top: -13px;
+        right: -13px;
+        border: 2px solid white;
+        border-radius: 50%;
+        background-color: var(--red);
+        font-size: 14px;
+        line-height: 22px;
+        text-align: center;
+        color: white;
+        vertical-align: middle;
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+    }
+}
+
+/* 0.3. utilisateur
+========================================================================== */
+.utilisateur {
+    display: flex;
+    margin: auto 0px;
+    align-items: center;
+    justify-content: center;
+    grid-area: utilisateur;
+    flex-direction: column;
+
+    p {
+        font-size: 13px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 5px;
+        margin-top: 0px;
+    }
+
+    input {
+        border: none;
+        background: none;
+        background-color: transparent !important;
+        font-size: 12px !important;
+        font-weight: 400 !important;
+        text-align: center;
+        text-decoration: underline;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 5px;
+        margin-top: 0px;
+
+        &:focus {
+            color: var(--blue);
+            outline: none;
+        }
+    }
+}
+
+
+
+/* 0.4. button retour
+========================================================================== */
+.btnRetour {
+    display: flex;
+    height: 47px;
+    padding: 0 0 0 20px;
+    position: relative;
+    align-items: center;
+    border: none;
+    border-radius: 7px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    grid-area: retour;
+    cursor: pointer;
+    flex-direction: row;
+    @include button_style;
+
+    p {
+        padding: 0 0 0 20px;
+
+    }
+
+    &::before {
+        $width: 20px;
+        height: $width;
+        width: $width;
+        position: absolute;
+        left: 10px;
+        background: url(../../images/spritesheet2.svg) 0*$width -3*$width;
+        background-size: $width*7;
+        content: "";
+        transform: rotate(90deg);
+    }
+}
+
+/* ==========================================================================
+1. HEADER-DIV2
+========================================================================== */
+.header-div2 {
+    display: grid;
+    height: 56px;
+    width: 100%;
+    justify-content: center;
+    background-color: white;
+    grid-template-columns: 400px 400px 400px;
+    grid-template-areas: "avantageA avantageB avantageC";
+}
+
+/* 1.1. avantages
+========================================================================== */
+.avantage {
+    display: flex;
+    justify-content: center;
+
+    p {
+        margin: auto 0;
+        position: relative;
+        font-size: 17px;
+        text-align: center;
+        padding-left: 10px;
+
+        &::before {
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            top: -2px;
+            left: -20px;
+            background: url('../../images/spritesheet2.svg') -20px -20px;
+            background-size: 140px;
+            content: "";
+
+        }
+    }
+
+    .is-colorWhite::before {
+        background: url('../../images/spritesheet2.svg') -20px 0px;
+        background-size: 140px;
+    }
+}
+
+.avantage1 {
+    grid-area: avantageA;
+}
+
+.avantage2 {
+    grid-area: avantageB;
+}
+
+.avantage3 {
+    grid-area: avantageC;
+}
+
+/* ==========================================================================
+2. HEADER-DIV3
+========================================================================== */
+.header-div3 {
+    display: grid;
+    height: 56px;
+    width: 100%;
+    justify-content: center;
+    box-shadow: 0px 2px 2px rgba(19, 38, 57, 0.5);
+    background-color: var(--blue);
+    grid-template-columns: repeat(15, 60px);
+    grid-column-gap: 20px;
+    grid-template-areas: "cat cat compte compte lang lang pages pages pages pages . . . . .";
+}
+
+/* 2.1. menu
+========================================================================== */
+.dropdown {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    &:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropbtn {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: none !important;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+    }
+
+    &:active {
+        border: none !important;
+        border-color: transparent !important;
+    }
+
+    .imgDownArrow {
+        padding-left: 10px;
+    }
+
+    .dropdown-content {
+        display: none;
+        width: 140px;
+        position: absolute;
+        top: 56px;
+        background-color: var(--dark_blue);
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px 0px;
+
+        a {
+            display: block;
+            padding: 12px 16px;
+            font-size: 20px;
+            text-decoration: none;
+            color: white;
+        }
+
+        a:hover {
+            background-color: white;
+            color: var(--blue);
+        }
+    }
+
+    .dropdown-content3 {
+        width: 300px !important;
+    }
+}
+
+header .dropbtn p::after {
+    $width: 20px;
+    height: $width;
+    width: $width;
+    position: absolute;
+    background: url('../../images/spritesheet2.svg') -0*$width -3*$width;
+    background-size: $width*7;
+    content: "";
+    margin-left: 10px;
+}
+
+.dropdown1 {
+    grid-area: cat;
+}
+
+.dropdown2 {
+    grid-area: lang;
+}
+
+.dropdown3 {
+    grid-area: pages;
+}
+
+.monCompte {
+    margin: auto;
+    grid-area: compte;
+
+    a {
+        margin: 0px;
+        padding: 0px;
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+        background: none !important;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+    }
+}

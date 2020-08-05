@@ -1,0 +1,327 @@
+/**
+Description: Short description.
+Version: 1.0.0
+Last update: YYYY/MM/DD
+Author: User Name <contact@sebastientraber.com>
+
+Summary:
+
+0. SHOPPINGCART
+    - 0.1. shoppingcart catégories
+1. DIV PRIXFINAL
+    - 1.1. code de prommotion
+    - 1.2. prixfinal
+2. SHOPPINGCART ITEMS
+    - 2.1. prix
+*/
+
+
+/* ==========================================================================
+   0. SHOPPINGCART
+========================================================================== */
+
+.section-H2 {
+    margin: 0 0 20px 0;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--dark_blue);
+}
+
+/* 0.1. shoppingcart catégories
+========================================================================== */
+
+#shopBasket_items {
+    width: 1180px;
+    border-bottom: 2px solid var(--blue);
+}
+
+#shopBasket_items #shopBasket_cat {
+    display: grid;
+    height: 37px;
+    align-items: center;
+    background-color: var(--dark_blue);
+    grid-template-columns: repeat(15, 60px);
+    grid-column-gap: 20px;
+    grid-template-areas: "sb_catA sb_catA . . . . . . . sb_catB sb_catB sb_catC sb_catC  sb_catD sb_catD";
+}
+
+#shopBasket_cat p {
+    text-align: center;
+    color: white;
+}
+
+#shopBasket_cat p:nth-child(1) {
+    grid-area: sb_catA;
+}
+
+#shopBasket_cat p:nth-child(2) {
+    grid-area: sb_catB;
+}
+
+#shopBasket_cat p:nth-child(3) {
+    grid-area: sb_catC;
+}
+
+#shopBasket_cat p:nth-child(4) {
+    grid-area: sb_catD;
+}
+
+/* ==========================================================================
+   1. DIV PRIXFINAL
+========================================================================== */
+
+#prix_et_prommo {
+    display: flex;
+}
+
+/* 1.1. code de prommotion
+========================================================================== */
+
+#promo_code {
+    display: flex;
+    height: 37px;
+    width: 460px;
+    padding: 0 20px 0 40px;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--dark_blue);
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+#promo_code p {
+    position: relative;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+
+    &::before {
+        $width: 20px;
+        height: $width;
+        width: $width;
+        position: absolute;
+        left: -10px+$width*-1;
+        background: url('../../images/spritesheet2.svg') -4*$width -0*$width;
+        background-size: $width*7;
+        content: "";
+    }
+}
+
+
+#promo_code form {
+    display: flex;
+    width: 100%;
+    padding: 0 0 0 10px;
+    justify-content: flex-end;
+}
+
+#promo_code input {
+    height: 30px;
+    width: 140px;
+    padding: 0 0 0 10px;
+    border: 2px solid white;
+    border-radius: 7px;
+    background-color: transparent;
+    color: white;
+}
+
+#promo_code input::placeholder {
+    color: white;
+}
+
+/* 1.2. prixfinal
+========================================================================== */
+#div_prixfinal {
+    display: grid;
+    margin: 20px 0 0 auto;
+    grid-template-columns: repeat(4, 60px);
+    grid-column-gap: 20px;
+    grid-template-areas:
+        "sb_label_subTotal sb_label_subTotal sb_subTotal sb_subTotal"
+        "strokeA strokeA strokeA strokeA"
+        "sb_label_tva sb_label_tva sb_tva sb_tva"
+        "strokeB strokeB strokeB strokeB"
+        "sb_label_total sb_label_total sb_total sb_total"
+        ". sb_validation sb_validation sb_validation";
+}
+
+#div_prixfinal p {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+#div_prixfinal p:nth-child(1) {
+    grid-area: sb_label_subTotal;
+}
+
+#div_prixfinal p:nth-child(2) {
+    grid-area: sb_subTotal;
+}
+
+#div_prixfinal p:nth-child(4) {
+    grid-area: sb_label_tva;
+}
+
+#div_prixfinal p:nth-child(5) {
+    grid-area: sb_tva;
+}
+
+#div_prixfinal p:nth-child(7) {
+    font-size: 20px;
+    font-weight: 600;
+    grid-area: sb_label_total;
+}
+
+#div_prixfinal p:nth-child(8) {
+    font-size: 20px;
+    font-weight: 600;
+    grid-area: sb_total;
+}
+
+.stroke1 {
+    height: 2px;
+    width: 100%;
+    background-color: #C6C6C6;
+    grid-area: strokeA;
+}
+
+.stroke2 {
+    height: 2px;
+    width: 100%;
+    background-color: #C6C6C6;
+    grid-area: strokeB;
+}
+
+#div_prixfinal form {
+    grid-area: sb_validation;
+}
+
+#div_prixfinal input {
+    display: flex;
+    height: 47px;
+    width: 100%;
+    margin: 20px 0 40px 0;
+    justify-content: center;
+    border: none;
+    border-radius: 7px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    @include button_style;
+}
+
+/* ==========================================================================
+   2. SHOPPINGCART ITEMS
+========================================================================== */
+#shopBasket_items article {
+    display: flex;
+    margin: 20px 0 20px 0;
+    position: relative;
+
+    &:hover::after {
+        height: 26px;
+        width: 26px;
+        position: absolute;
+        top: -13px;
+        right: -13px;
+        border: 2px solid white;
+        border-radius: 50%;
+        background-color: var(--red);
+        background-image: url(../../images/croix_blanc.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 65%;
+        content: "";
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+    }
+
+    &:hover {
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+        z-index: 2;
+    }
+
+    & img {
+        height: 220px;
+        margin-right: 20px;
+    }
+}
+
+
+
+.sb_info {
+    max-width: 460px;
+    margin-right: 20px;
+}
+
+.sb_nom {
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.sb_marque {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.sb_description {
+    display: -webkit-box;
+    line-height: 1.2em;
+    text-overflow: ellipsis;
+    margin-bottom: 20px;
+    overflow: hidden;
+    /* nbr de ligne de texte à afficher */
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.sb_livraison {
+    position: relative;
+    font-size: 12px;
+    color: var(--green);
+    margin-bottom: 20px;
+}
+
+.sb_livraison::after {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: -2px;
+    background-image: url(../../images/spritesheet2.svg);
+    background-size: 7*20px;
+    content: " ";
+    margin-left: 10px;
+}
+
+/* 2.1. prix
+========================================================================== */
+.sb_prix {
+    display: flex;
+}
+
+.sb_prix p {
+    height: fit-content;
+    width: 140px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.sb_prix div {
+    display: flex;
+    width: 140px;
+    margin: 0 20px;
+    justify-content: center;
+}
+
+.sb_prix input {
+    height: 27px;
+    width: 43px;
+    border: 2px solid var(--dark_blue);
+    border-radius: 7px;
+    margin-top: 15px;
+}

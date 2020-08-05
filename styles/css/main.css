@@ -1,0 +1,2220 @@
+@charset "UTF-8";
+.is-displayNone {
+  display: none !important;
+}
+
+.is-green {
+  background-color: var(--green);
+}
+
+.is-yellow {
+  background-color: var(--yellow);
+}
+
+.is-red {
+  background-color: var(--red);
+}
+
+.is-blue {
+  background: var(--blue);
+}
+
+.is-colorOrange {
+  color: var(--orange) !important;
+}
+
+.is-colorBlue {
+  color: var(--blue) !important;
+}
+
+.is-colorGreen {
+  color: var(--green) !important;
+}
+
+.is-colorYellow {
+  color: var(--yellow) !important;
+}
+
+.is-colorWhite {
+  color: white !important;
+}
+
+.is-header2 {
+  background-color: var(--blue) !important;
+  box-shadow: 0px 2px 2px rgba(19, 38, 57, 0.5);
+}
+
+.is-borderTop {
+  border-top: 2px solid var(--blue);
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:root {
+  /* couleur */
+  --orange: rgb(244, 151, 35);
+  --blue: rgb(77, 144, 205);
+  --blue50Percent: rgba(77, 144, 205, 0.5);
+  --dark_blue: rgb(30, 60, 90);
+  --green: #2EAF16;
+  --yellow: #FDC938;
+  --red: #F00C00;
+  --dark: #05182A;
+  /* fonts */
+  --font_regular: 400;
+  --font_bold: 700;
+  /* autres */
+  --radius: 7px;
+}
+
+*:focus {
+  outline: none;
+}
+
+html {
+  min-height: 100%;
+  box-sizing: border-box;
+  background-color: var(--dark_blue);
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  font-family: 'Arimo', "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  color: #1e3c5a;
+  margin: 0px;
+  background-color: white;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+main {
+  flex: 1;
+  margin-top: 204px;
+  margin-bottom: 350px;
+  background-color: white;
+}
+
+h3 {
+  color: white;
+  padding: 20px 0 0 0;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--dark_blue);
+}
+
+/* ==========================================================================
+    Diaporama
+ ========================================================================== */
+.sectionDiapo {
+  display: flex;
+  max-width: 1180px;
+  margin: 40px auto 0 auto;
+}
+
+.diaporama {
+  display: grid;
+  grid-template-columns: 1fr 98px 1fr;
+  grid-template-areas: "imgDiapo imgDiapo imgDiapo" ". points .";
+}
+
+.boites {
+  grid-area: imgDiapo;
+  overflow: hidden;
+}
+
+.boite {
+  width: 25%;
+}
+
+.slides {
+  display: flex;
+  width: calc(100%*4);
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+  animation: diapo 20s infinite;
+}
+
+.point1:checked ~ .boites > .slides {
+  transform: translateX(0);
+}
+
+.point2:checked ~ .boites > .slides {
+  transform: translateX(-25%);
+}
+
+.point3:checked ~ .boites > .slides {
+  transform: translateX(-50%);
+}
+
+.point4:checked ~ .boites > .slides {
+  transform: translateX(-75%);
+}
+
+.point1:checked ~ .labels > .a-label,
+.point2:checked ~ .labels > .b-label,
+.point3:checked ~ .labels > .c-label,
+.point4:checked ~ .labels > .d-label {
+  background-color: var(--blue);
+  border: 2px solid white;
+}
+
+.labels {
+  grid-area: points;
+  display: flex;
+  justify-content: space-between;
+  top: -40px;
+  position: relative;
+}
+
+.s-index {
+  width: 17px;
+  height: 17px;
+  border-radius: 15%;
+  background-color: white;
+  cursor: pointer;
+}
+
+.points {
+  display: none;
+}
+
+/**
+Description: Product display CSS
+Version: 1.0.0
+Last update: YYYY/MM/DD
+Author: User Name <contact@sebastientraber.com>
+
+Summary:
+
+0. FILTRE
+    - 0.1. scrollbar
+1. TRIAGE
+    - 1.1. Triage : selecteur
+    - 1.2. vitrine - Disposition des produits
+    - 1.3. vitrine - Pages bas
+*/
+#shop {
+  margin-bottom: 40px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(15, 60px);
+  column-gap: 20px;
+  grid-template-areas: "filtres filtres filtres trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits ";
+}
+
+/* ==========================================================================
+ 0. FILTRE
+========================================================================== */
+#filtres {
+  display: flex;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: var(--dark_blue);
+  grid-area: filtres;
+  margin-bottom: 40px;
+  flex-direction: column;
+}
+
+#filtres h2 {
+  height: 50px;
+  padding: 15px 0;
+  font-size: 17pt;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+}
+
+.filtre {
+  display: flex;
+  height: 30px;
+  position: relative;
+  align-items: center;
+  background-color: var(--blue);
+  margin-bottom: 2px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+.filtre:active {
+  border-bottom: none;
+}
+
+.filtre::after {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 10px;
+  background: url("../../images/spritesheet2.svg") -60px -40px;
+  background-size: 140px;
+  content: "";
+}
+
+.is-displayBlock::after {
+  background: url("../../images/spritesheet2.svg") -40px -40px;
+  background-size: 140px;
+}
+
+.filtre_last {
+  margin-bottom: 0;
+}
+
+.img_minus {
+  width: 21px;
+  position: relative;
+  left: 40px;
+}
+
+.filtre_produit h3 {
+  width: 150px;
+  padding: 0 0 0 10px;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--dark);
+  white-space: nowrap;
+}
+
+.filtre_liste {
+  position: relative;
+  background-color: var(--dark_blue);
+  font-size: 12px;
+  font-weight: 400;
+  color: white;
+}
+
+.filtre_liste li {
+  display: flex;
+  align-items: center;
+  line-height: 1.6em;
+}
+
+.filtre_liste ul {
+  padding: 10px 10px;
+}
+
+/* The container */
+.container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  height: 0;
+  width: 0;
+  margin: 0;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  display: flex;
+  height: 15px;
+  width: 15px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  border-radius: 3px;
+  background-color: none;
+  margin-right: 20px;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  display: none;
+  position: absolute;
+  content: "";
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  height: 10px;
+  width: 5px;
+  top: 1px;
+  left: 4px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.search-container-marque {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.search-container-marque form {
+  height: 22px;
+}
+
+.search-container-marque input {
+  height: 22px;
+  width: 206px;
+  box-sizing: border-box;
+  border-width: 2px;
+  background-color: white;
+  cursor: text;
+  padding-left: 5px;
+  padding-right: 25px;
+}
+
+.search-container-marque img {
+  height: 16px;
+  position: relative;
+  top: -18px;
+  left: 185px;
+}
+
+/* 0.1. scrollbar
+========================================================================= */
+.scrollbar {
+  height: 150px;
+  width: 90%;
+  margin: 10px 10px 10px 0;
+  float: left;
+  overflow-y: scroll;
+}
+
+.force-overflow {
+  min-height: 220px;
+}
+
+#style-1::-webkit-scrollbar-track,
+#style-2::-webkit-scrollbar-track {
+  border: 1px solid #c7c6c6;
+  background-color: #c7c6c6;
+}
+
+#style-1::-webkit-scrollbar,
+#style-2::-webkit-scrollbar {
+  width: 15px;
+  background-color: #c7c6c6;
+}
+
+#style-1::-webkit-scrollbar-thumb,
+#style-2::-webkit-scrollbar-thumb {
+  border: 1px solid #c7c6c6;
+  background-color: var(--dark_blue);
+}
+
+/* ==========================================================================
+ 1. TRIAGE
+ ========================================================================== */
+#trie-produits {
+  display: flex;
+  grid-area: trie-produits;
+  flex-direction: column;
+}
+
+#triage {
+  display: grid;
+  height: 50px;
+  align-items: center;
+  background-color: var(--dark_blue);
+  grid-template-columns: repeat(12, 60px);
+  column-gap: 20px;
+  grid-area: trie;
+  grid-template-areas: ". trie_btn trie_btn  trie_info trie_info trie_info trie_info trie_info trie_info trie_info trie_info trie_info ";
+  order: 1;
+}
+
+#triage-info {
+  display: grid;
+  height: 100%;
+  align-items: center;
+  grid-template-columns: repeat(9, 60px);
+  column-gap: 20px;
+  grid-area: trie_info;
+  grid-template-areas: "trie_value trie_value . trie_nbr trie_nbr trie_nbr trie_page trie_page trie_page";
+}
+
+#triage-info p {
+  text-align: left;
+}
+
+#triage form {
+  grid-area: trie_btn;
+}
+
+#triageValue {
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  grid-area: trie_value;
+}
+
+#nbrProduit {
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  grid-area: trie_nbr;
+}
+
+#pages {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  color: white;
+  grid-area: trie_page;
+}
+
+#pages a {
+  text-decoration: none;
+  color: white;
+}
+
+/* 1.1. Triage : selecteur 
+========================================================================= */
+.trie-btn {
+  display: flex;
+  height: 36px;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--blue);
+  font-size: 18px;
+  text-align: center;
+  color: var(--dark);
+  padding-left: 10px;
+}
+
+.dropdown:hover .form-trie-content {
+  display: block;
+}
+
+#form-trie p::after {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: url("../../images/spritesheet2.svg") 0px -100px;
+  background-size: 140px;
+  margin-left: 20px;
+}
+
+#form-trie ul {
+  margin: 0;
+  padding: 0;
+}
+
+#form-trie li {
+  padding: 0;
+}
+
+#form-trie label {
+  display: flex;
+  height: 36px;
+  width: 100%;
+  align-items: center;
+  color: var(--dark);
+  padding-left: 10px;
+}
+
+.form-trie-content {
+  display: none;
+  width: 140px;
+  position: absolute;
+  top: 36px;
+  background-color: var(--blue);
+  z-index: 1;
+}
+
+.form-trie-content li {
+  display: block;
+  padding: 12px 16px;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.form-trie-content label:hover {
+  background-color: #afcde9;
+}
+
+.form-trie-content input {
+  display: none;
+}
+
+/* 1.2. vitrine - Disposition des produits
+========================================================================= */
+.vitrine {
+  display: flex;
+  position: relative;
+  grid-area: vitrine;
+  flex-wrap: wrap;
+  order: 2;
+}
+
+.produit {
+  width: 235px;
+  padding: 0 10px;
+  margin-top: 40px;
+}
+
+.produit:hover {
+  transition: transform 0.2 s linear;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+  transform: translate(0%, -2%);
+  z-index: 2;
+}
+
+.div_imgProduit {
+  position: relative;
+  border-bottom: 2px solid var(--blue);
+}
+
+.img_produit {
+  width: 100%;
+}
+
+.rabais {
+  display: flex;
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 0;
+  left: calc(100% - 60px);
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 5px 5px;
+  background-color: var(--blue);
+}
+
+.rabais p {
+  font-size: 22px;
+  font-weight: var(--font_bold);
+  color: white;
+}
+
+.nouveau {
+  display: flex;
+  height: 32px;
+  width: 100px;
+  position: absolute;
+  top: 80%;
+  left: calc(50% - 50px);
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue);
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.produit_info {
+  padding: 0 5px;
+}
+
+.produit_nom {
+  min-height: 40px;
+  margin: 10px 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.produit_marque {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 10px;
+}
+
+.div_dispo {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.div_dispo p {
+  height: 8px;
+  font-size: 10px;
+  font-weight: 400;
+  padding-left: 10px;
+}
+
+.dispo_pastille {
+  height: 12px;
+  width: 12px;
+  border-radius: 2px;
+}
+
+.produit_prix {
+  padding: 10px 0;
+  font-size: 19px;
+  font-weight: 700;
+  text-align: right;
+  color: var(--blue);
+}
+
+/* 1.3. vitrine - Pages bas
+========================================================================= */
+.page_bas {
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(12, 60px);
+  column-gap: 20px;
+  grid-area: page_bas;
+  grid-template-areas: ". . . . . . . .  page_bas_p page_bas_p page_bas_p .";
+}
+
+.page_bas p {
+  margin: 40px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark_blue);
+  grid-area: page_bas_p;
+}
+
+.page_bas p a {
+  text-decoration: none;
+  color: var(--dark_blue);
+}
+
+/**
+Description: Header CSS
+Version: 1.0.0
+Last update: YYYY/MM/DD
+Author: User Name <contact@sebastientraber.com>
+
+Summary:
+
+0. HEADER-DIV1
+    - 0.1. searchbar
+    - 0.2. button panier
+    - 0.3. utilisateur
+    - 0.4. button retour
+1. HEADER-DIV2
+    - 1.1. avantages
+2. HEADER-DIV3
+    - 2.1. menu   
+*/
+header {
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+/* ==========================================================================
+   0. HEADER-DIV1
+========================================================================== */
+.header-div1 {
+  display: grid;
+  height: 95px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark_blue);
+  grid-template-columns: repeat(15, 60px);
+  grid-column-gap: 20px;
+  grid-template-areas: "logo logo logo sbar sbar sbar sbar sbar sbar sbar sbar panier panier utilisateur utilisateur";
+}
+
+.header2-div1 {
+  display: grid;
+  height: 95px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark_blue);
+  grid-template-columns: repeat(15, 60px);
+  grid-column-gap: 20px;
+  grid-template-areas: "logo logo logo . . . . . . retour retour retour retour utilisateur utilisateur";
+}
+
+h1 {
+  margin: auto 0px;
+  grid-area: logo;
+}
+
+/* 0.1. searchbar
+========================================================================== */
+.searchContainer {
+  margin: auto 0px;
+  grid-area: sbar;
+}
+
+.searchContainer input {
+  height: 47px;
+  width: 573px;
+  padding: 0 20px;
+  border: none;
+  border-width: 2px;
+  background-color: white;
+  font-size: 24px;
+  color: #1e1e1c;
+  cursor: text;
+}
+
+.searchContainer button {
+  height: 47px;
+  width: 47px;
+  margin: auto 0px;
+  position: relative;
+  border: none;
+  border-radius: 0px 7px 7px 0px;
+  cursor: pointer;
+  float: right;
+  box-shadow: 0px 5px 4px rgba(19, 38, 57, 0.5);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+  background: var(--blue);
+}
+
+.searchContainer button:active {
+  box-shadow: none;
+  border-bottom: none;
+}
+
+.searchContainer button::after {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  background: url("../../images/spritesheet2.svg") -160px -64px;
+  background-size: 224px;
+  content: "";
+}
+
+.searchContainer .imgLoupe {
+  display: block;
+}
+
+/* 0.2. Button panier
+========================================================================== */
+.btnPanier {
+  display: flex;
+  height: 47px;
+  width: 100%;
+  margin: auto 0px;
+  position: relative;
+  border-radius: 7px;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  grid-area: panier;
+  cursor: pointer;
+  box-shadow: 0px 5px 4px rgba(19, 38, 57, 0.5);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+  background: var(--blue);
+}
+
+.btnPanier:active {
+  box-shadow: none;
+  border-bottom: none;
+  border-top: none;
+}
+
+.btnPanier .btnPanier-prix {
+  width: 70%;
+  margin: auto 0;
+  padding: 0 0 0 10px;
+  position: relative;
+  font-size: 14px;
+  font-weight: var(--font_bold);
+  color: var(--dark);
+}
+
+.btnPanier .btnPanier-prix::after {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  top: -7px;
+  right: -30px;
+  background: url("../../images/spritesheet2.svg") -192px -64px;
+  background-size: 224px;
+  content: "";
+}
+
+.btnPanier .nbrPanier {
+  display: inline-block;
+  height: 26px;
+  width: 26px;
+  position: absolute;
+  top: -13px;
+  right: -13px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: var(--red);
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  color: white;
+  vertical-align: middle;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+}
+
+/* 0.3. utilisateur
+========================================================================== */
+.utilisateur {
+  display: flex;
+  margin: auto 0px;
+  align-items: center;
+  justify-content: center;
+  grid-area: utilisateur;
+  flex-direction: column;
+}
+
+.utilisateur p {
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 5px;
+  margin-top: 0px;
+}
+
+.utilisateur input {
+  border: none;
+  background: none;
+  background-color: transparent !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-align: center;
+  text-decoration: underline;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 5px;
+  margin-top: 0px;
+}
+
+.utilisateur input:focus {
+  color: var(--blue);
+  outline: none;
+}
+
+/* 0.4. button retour
+========================================================================== */
+.btnRetour {
+  display: flex;
+  height: 47px;
+  padding: 0 0 0 20px;
+  position: relative;
+  align-items: center;
+  border: none;
+  border-radius: 7px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  grid-area: retour;
+  cursor: pointer;
+  flex-direction: row;
+  box-shadow: 0px 5px 4px rgba(19, 38, 57, 0.5);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+  background: var(--blue);
+}
+
+.btnRetour p {
+  padding: 0 0 0 20px;
+}
+
+.btnRetour::before {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  left: 10px;
+  background: url(../../images/spritesheet2.svg) 0px -60px;
+  background-size: 140px;
+  content: "";
+  transform: rotate(90deg);
+}
+
+/* ==========================================================================
+1. HEADER-DIV2
+========================================================================== */
+.header-div2 {
+  display: grid;
+  height: 56px;
+  width: 100%;
+  justify-content: center;
+  background-color: white;
+  grid-template-columns: 400px 400px 400px;
+  grid-template-areas: "avantageA avantageB avantageC";
+}
+
+/* 1.1. avantages
+========================================================================== */
+.avantage {
+  display: flex;
+  justify-content: center;
+}
+
+.avantage p {
+  margin: auto 0;
+  position: relative;
+  font-size: 17px;
+  text-align: center;
+  padding-left: 10px;
+}
+
+.avantage p::before {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: -2px;
+  left: -20px;
+  background: url("../../images/spritesheet2.svg") -20px -20px;
+  background-size: 140px;
+  content: "";
+}
+
+.avantage .is-colorWhite::before {
+  background: url("../../images/spritesheet2.svg") -20px 0px;
+  background-size: 140px;
+}
+
+.avantage1 {
+  grid-area: avantageA;
+}
+
+.avantage2 {
+  grid-area: avantageB;
+}
+
+.avantage3 {
+  grid-area: avantageC;
+}
+
+/* ==========================================================================
+2. HEADER-DIV3
+========================================================================== */
+.header-div3 {
+  display: grid;
+  height: 56px;
+  width: 100%;
+  justify-content: center;
+  box-shadow: 0px 2px 2px rgba(19, 38, 57, 0.5);
+  background-color: var(--blue);
+  grid-template-columns: repeat(15, 60px);
+  grid-column-gap: 20px;
+  grid-template-areas: "cat cat compte compte lang lang pages pages pages pages . . . . .";
+}
+
+/* 2.1. menu
+========================================================================== */
+.dropdown {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown .dropbtn {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none !important;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.dropdown:active {
+  border: none !important;
+  border-color: transparent !important;
+}
+
+.dropdown .imgDownArrow {
+  padding-left: 10px;
+}
+
+.dropdown .dropdown-content {
+  display: none;
+  width: 140px;
+  position: absolute;
+  top: 56px;
+  background-color: var(--dark_blue);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px 0px;
+}
+
+.dropdown .dropdown-content a {
+  display: block;
+  padding: 12px 16px;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.dropdown .dropdown-content a:hover {
+  background-color: white;
+  color: var(--blue);
+}
+
+.dropdown .dropdown-content3 {
+  width: 300px !important;
+}
+
+header .dropbtn p::after {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  background: url("../../images/spritesheet2.svg") 0px -60px;
+  background-size: 140px;
+  content: "";
+  margin-left: 10px;
+}
+
+.dropdown1 {
+  grid-area: cat;
+}
+
+.dropdown2 {
+  grid-area: lang;
+}
+
+.dropdown3 {
+  grid-area: pages;
+}
+
+.monCompte {
+  margin: auto;
+  grid-area: compte;
+}
+
+.monCompte a {
+  margin: 0px;
+  padding: 0px;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  background: none !important;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+/**
+Description: Footer CSS
+Version: 1.0.0
+Last update: YYYY/MM/DD
+Author: User Name <contact@sebastientraber.com>
+
+Summary:
+
+0. FOOTER-DIV1
+    - 0.1. newsletter
+    - 0.2. résaux sociaux
+        - 0.2.1. facebook
+        - 0.2.2. twitter
+        - 0.2.3. instagram
+        - 0.2.4. pinterest
+    - 0.3. contact
+    - 0.4. payement
+        - 0.4.1. visa
+        - 0.4.2. mastercard
+        - 0.4.3. maestro
+        - 0.4.4. paypal
+        - 0.4.5. poste
+1. FOOTER-DIV2          
+*/
+footer {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 5;
+  background-color: var(--dark_blue);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+0. FOOTER-DIV1
+========================================================================== */
+.footer-div1 {
+  display: grid;
+  height: 294px;
+  justify-content: center;
+  grid-template-columns: repeat(15, 60px);
+  column-gap: 20px;
+  grid-template-areas: "social social social social . news news news news news . contact contact contact contact" "payement payement payement payement payement payement payement payement payement payement payement payement payement payement payement";
+}
+
+.footerTitle {
+  padding: 20px 0 0 0;
+  font-size: 18px;
+  font-weight: 700;
+  height: 60px;
+  color: white;
+}
+
+/* 0.1. newsletter
+========================================================================== */
+#newsletter {
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(5, 60px);
+  grid-column-gap: 20px;
+  grid-area: news;
+  grid-template-areas: "newsTitle newsTitle newsTitle newsTitle newsTitle" "newsForm newsForm newsForm newsForm newsForm" "newsP newsP newsP newsP newsP";
+}
+
+#newsletter form {
+  display: flex;
+  text-align: center;
+  grid-area: newsForm;
+  margin-top: 10px;
+}
+
+#newsletter input {
+  height: 47px;
+  width: calc(100% - 47px);
+  box-sizing: border-box;
+  grid-area: newsInput;
+  padding: 0 20px;
+  border: none;
+  border-width: 2px;
+  background-color: white;
+  font-size: 24px;
+  color: #1e1e1c;
+  cursor: text;
+}
+
+#newsletter button {
+  height: 47px;
+  width: 47px;
+  position: relative;
+  border-radius: 0 7px 7px 0;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  cursor: pointer;
+  box-shadow: 0px 5px 4px rgba(19, 38, 57, 0.5);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+  background: var(--blue);
+}
+
+#newsletter button::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: url(../../images/spritesheet2.svg) -64px -128px;
+  background-size: 224px;
+  left: 7.5px;
+  top: 7.5px;
+}
+
+#newsletter p:not(.footerTitle) {
+  font-size: 9px;
+  color: white;
+  grid-area: newsP;
+}
+
+#newsletter .footerTitle {
+  grid-area: newsTitle;
+}
+
+/* 0.2. résaux sociaux
+========================================================================== */
+.socialMedia {
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(4, 60px);
+  grid-column-gap: 20px;
+  grid-area: social;
+  grid-template-areas: "smTitle smTitle smTitle smTitle" "facebook twitter instagram pinterest";
+}
+
+.socialMedia a {
+  height: 60px;
+}
+
+.socialMedia a img {
+  height: 60px;
+  width: 60px;
+  border-radius: 5px;
+  background-repeat: no-repeat !important;
+  background-size: 280px !important;
+}
+
+.socialMedia a img:hover {
+  animation-name: pulse;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  transition: transform 0.1s linear;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* 0.2.1. facebook
+====================================== */
+.socialMedia a:nth-child(2) img {
+  background: url(../../images/spritesheet.svg) 0 0;
+}
+
+.socialMedia a:nth-child(2) img:hover {
+  background: url(../../images/spritesheet.svg) 0 -60px;
+}
+
+/* 0.2.2. twitter
+====================================== */
+.socialMedia a:nth-child(3) img {
+  background: url(../../images/spritesheet.svg) -60px 0;
+}
+
+.socialMedia a:nth-child(3) img:hover {
+  background: url(../../images/spritesheet.svg) -60px -60px;
+}
+
+/* 0.2.3. instagrame
+====================================== */
+.socialMedia a:nth-child(4) img {
+  background: url(../../images/spritesheet.svg) -120px 0;
+}
+
+.socialMedia a:nth-child(4) img:hover {
+  background: url(../../images/spritesheet.svg) -120px -60px;
+}
+
+/* 0.2.4. pinterest
+====================================== */
+.socialMedia a:nth-child(5) img {
+  background: url(../../images/spritesheet.svg) -180px 0;
+}
+
+.socialMedia a:nth-child(5) img:hover {
+  background: url(../../images/spritesheet.svg) -180px -60px;
+}
+
+.socialMedia .footerTitle {
+  grid-area: smTitle;
+}
+
+.socialMedia:nth-child(2) {
+  grid-area: facebook;
+}
+
+.socialMedia:nth-child(3) {
+  grid-area: twitter;
+}
+
+.socialMedia:nth-child(4) {
+  grid-area: instagram;
+}
+
+.socialMedia:nth-child(5) {
+  grid-area: pinterest;
+}
+
+/* 0.3. contact
+========================================================================== */
+.contact {
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(4, 60px);
+  grid-column-gap: 20px;
+  grid-area: contact;
+  grid-template-areas: "contactTitle contactTitle contactTitle contactTitle" "contactP contactP contactP contactP" "contactLink contactLink contactLink contactLink";
+}
+
+.contact .footerTitle {
+  grid-area: contactTitle;
+}
+
+.contact p:not(.footerTitle) {
+  font-size: 12px;
+  text-align: left;
+  color: white;
+  grid-area: contactP;
+}
+
+.contact a {
+  font-size: 12px;
+  text-align: left;
+  text-decoration: underline;
+  color: white;
+  grid-area: contactLink;
+}
+
+/* 0.4. payement
+========================================================================== */
+.payement {
+  display: grid;
+  align-items: center;
+  text-align: center;
+  color: white;
+  grid-template-columns: repeat(15, 60px);
+  grid-column-gap: 20px;
+  grid-area: payement;
+  grid-template-areas: "payementP payementP payementP payementP . visa visa mastercard mastercard maestro maestro paypal paypal post post";
+}
+
+.payement p {
+  font-size: 17px;
+  text-align: left;
+  grid-area: payementP;
+}
+
+.payement img {
+  height: 90px;
+  width: 140px;
+  border-radius: 5px;
+  background-repeat: no-repeat !important;
+  background-size: 280px !important;
+}
+
+.payement img:hover {
+  animation-name: pulse;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  transition: transform 0.1s linear;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* 0.4.1. visa
+====================================== */
+.payement a:nth-child(2) {
+  grid-area: visa;
+}
+
+.payement a:nth-child(2) img {
+  background: url(../../images/spritesheet.svg) 0 -120px;
+}
+
+.payement a:nth-child(2) img:hover {
+  background: url(../../images/spritesheet.svg) var(--blue);
+  background-position: 0 -210px;
+}
+
+/* 0.4.2. mastercard
+====================================== */
+.payement a:nth-child(3) {
+  grid-area: mastercard;
+}
+
+.payement a:nth-child(3) img {
+  background: url(../../images/spritesheet.svg) 0 -300px;
+}
+
+.payement a:nth-child(3) img:hover {
+  background: url(../../images/spritesheet.svg) var(--blue);
+  background-position: 0 -390px;
+}
+
+/* 0.4.3. maestro
+====================================== */
+.payement a:nth-child(4) {
+  grid-area: maestro;
+}
+
+.payement a:nth-child(4) img {
+  background: url(../../images/spritesheet.svg) -140px -120px;
+}
+
+.payement a:nth-child(4) img:hover {
+  background: url(../../images/spritesheet.svg) var(--blue);
+  background-position: -140px -210px;
+}
+
+/* 0.4.4. paypal
+====================================== */
+.payement a:nth-child(5) {
+  grid-area: paypal;
+}
+
+.payement a:nth-child(5) img {
+  background: url(../../images/spritesheet.svg) -140px -300px;
+}
+
+.payement a:nth-child(5) img:hover {
+  background: url(../../images/spritesheet.svg) var(--blue);
+  background-position: -140px -390px;
+}
+
+/* 0.4.5. poste
+====================================== */
+.payement a:nth-child(6) {
+  grid-area: post;
+}
+
+.payement a:nth-child(6) img {
+  background: url(../../images/spritesheet.svg) 0 -480px;
+}
+
+.payement a:nth-child(6) img:hover {
+  background: url(../../images/spritesheet.svg) var(--blue);
+  background-position: -140px -480px;
+}
+
+.payement a {
+  width: 100%;
+}
+
+/* ==========================================================================
+1. FOOTER-DIV2
+========================================================================== */
+.footer-div2 {
+  display: grid;
+  height: 56px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue);
+  grid-template-columns: repeat(15, 60px);
+  column-gap: 20px;
+  grid-template-areas: "copyright copyright copyright copyright . lawA lawA lawB lawB lawC lawC lawC lawD lawD lawD";
+  order: 1;
+}
+
+.footer-div2 p,
+.footer-div2 a {
+  font-size: 12px;
+  text-align: center;
+  color: white;
+}
+
+.footer-div2 a {
+  text-decoration: underline;
+}
+
+.footer-div2 p {
+  grid-area: copyright;
+}
+
+.footer-div2 a:nth-child(2) {
+  grid-area: lawA;
+}
+
+.footer-div2 a:nth-child(3) {
+  grid-area: lawB;
+}
+
+.footer-div2 a:nth-child(4) {
+  grid-area: lawC;
+}
+
+.footer-div2 a:nth-child(5) {
+  grid-area: lawD;
+}
+
+/**
+Description: Produit détails CSS
+Version: 1.0.0
+Last update: YYYY/MM/DD
+Author: User Name <contact@sebastientraber.com>
+ 
+Summary:
+ 
+0. SECTION PRODUIT ACTUEL
+    - 0.1. images display
+    - 0.2. informations
+    - 0.3. ajouter au panier
+1. VOUS AIMEREZ AUSSI          
+*/
+/* ==========================================================================
+ 0. SECTION PRODUIT ACTUEL
+========================================================================== */
+#section1 {
+  max-width: 1180px;
+  margin: 40px auto 0 auto;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-areas: "pro_img pro_img pro_img pro_img pro_img pro_content pro_content pro_content pro_content pro_content pro_content pro_content pro_content pro_content pro_content";
+}
+
+/* 0.1. images display
+========================================================================== */
+#produit_images {
+  grid-area: pro_img;
+}
+
+#img_showcase {
+  width: 100%;
+  height: 380px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#get_image_details {
+  display: flex;
+  justify-content: center;
+}
+
+#get_image_details label {
+  margin: 0 10px 0 10px;
+}
+
+#get_image_details label:nth-child(2) {
+  margin: 0 10px 0 0 !important;
+}
+
+#get_image_details label:last-child {
+  margin: 0 0 0 10px !important;
+}
+
+#get_image_details div {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.div_transparent {
+  margin: 0 !important;
+}
+
+#get_image_details #radio_1:checked ~ .radio_label1 div div,
+#get_image_details #radio_2:checked ~ .radio_label2 div div,
+#get_image_details #radio_3:checked ~ .radio_label3 div div,
+#get_image_details #radio_4:checked ~ .radio_label4 div div,
+#get_image_details #radio_5:checked ~ .radio_label5 div div,
+#get_image_details #radio_6:checked ~ .radio_label6 div div {
+  background-color: var(--blue50Percent);
+  box-sizing: border-box;
+  border: 2px solid var(--blue);
+}
+
+/* 0.2. informations 
+========================================================================== */
+#produit_content {
+  grid-area: pro_content;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-areas: "pro_title pro_title pro_title pro_title pro_title pro_title . . . ." "pro_info pro_info pro_info pro_info pro_info pro_info pro_panier pro_panier pro_panier pro_panier";
+}
+
+#produit_title {
+  grid-area: pro_title;
+}
+
+#produit_title h2 {
+  font-size: 20pt;
+  font-weight: 700;
+  color: var(--dark_blue);
+}
+
+#marque {
+  font-size: 17pt;
+  margin: 10px 0;
+}
+
+#produit_info {
+  grid-area: pro_info;
+  border-top: 2px solid var(--blue);
+}
+
+#produit_info h3 {
+  font-size: 16pt;
+  font-weight: 700;
+  margin: 20px 0;
+  color: var(--dark_blue);
+  padding: 0;
+}
+
+#produit_info li {
+  padding-bottom: 10px;
+}
+
+/* 0.3. ajouter au panier 
+========================================================================== */
+#produit_panier {
+  grid-area: pro_panier;
+  border: 2px solid var(--blue);
+  height: fit-content;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas: "prix prix prix rabais" "btnA btnB btnB ." ". dispo dispo .";
+}
+
+#prix {
+  grid-area: prix;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#prix p {
+  padding-bottom: 10px;
+}
+
+#prix p:first-child {
+  font-size: 20pt;
+  font-weight: 700;
+}
+
+#prix p:last-child {
+  font-size: 12pt;
+  font-weight: 700;
+}
+
+input[type="number"] {
+  grid-area: btnA;
+  width: 43px;
+  border: 2px solid var(--blue);
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+input[type="submit"] {
+  grid-area: btnB;
+  background-color: var(--blue);
+  font-size: 15px;
+  color: white;
+  font-weight: 700;
+  align-items: center;
+  display: flex;
+  height: 28px;
+  padding: 0 auto !important;
+  border: none;
+  border-radius: 5px;
+}
+
+.div_dispo {
+  grid-area: dispo;
+  margin-bottom: 10px;
+}
+
+.div_dispo div {
+  width: 12px !important;
+}
+
+#produit_panier div:not(#div_rabais) {
+  width: 100%;
+}
+
+#div_rabais {
+  background-color: var(--blue);
+  grid-area: rabais;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 0 5px;
+}
+
+#rabais {
+  color: white;
+  font-size: 18pt;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ==========================================================================
+     1. VOUS AIMEREZ AUSSI
+========================================================================== */
+#section2 {
+  max-width: 1180px;
+  margin: 0 auto 40px auto;
+}
+
+#section2 h2 {
+  font-size: 18pt;
+  font-weight: 700;
+  color: var(--blue);
+  margin: 40px 0 10px 0;
+}
+
+/**
+Description: Short description.
+Version: 1.0.0
+Last update: YYYY/MM/DD
+Author: User Name <contact@sebastientraber.com>
+
+Summary:
+
+0. SHOPPINGCART
+    - 0.1. shoppingcart catégories
+1. DIV PRIXFINAL
+    - 1.1. code de prommotion
+    - 1.2. prixfinal
+2. SHOPPINGCART ITEMS
+    - 2.1. prix
+*/
+/* ==========================================================================
+   0. SHOPPINGCART
+========================================================================== */
+.section-H2 {
+  margin: 0 0 20px 0;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--dark_blue);
+}
+
+/* 0.1. shoppingcart catégories
+========================================================================== */
+#shopBasket_items {
+  width: 1180px;
+  border-bottom: 2px solid var(--blue);
+}
+
+#shopBasket_items #shopBasket_cat {
+  display: grid;
+  height: 37px;
+  align-items: center;
+  background-color: var(--dark_blue);
+  grid-template-columns: repeat(15, 60px);
+  grid-column-gap: 20px;
+  grid-template-areas: "sb_catA sb_catA . . . . . . . sb_catB sb_catB sb_catC sb_catC  sb_catD sb_catD";
+}
+
+#shopBasket_cat p {
+  text-align: center;
+  color: white;
+}
+
+#shopBasket_cat p:nth-child(1) {
+  grid-area: sb_catA;
+}
+
+#shopBasket_cat p:nth-child(2) {
+  grid-area: sb_catB;
+}
+
+#shopBasket_cat p:nth-child(3) {
+  grid-area: sb_catC;
+}
+
+#shopBasket_cat p:nth-child(4) {
+  grid-area: sb_catD;
+}
+
+/* ==========================================================================
+   1. DIV PRIXFINAL
+========================================================================== */
+#prix_et_prommo {
+  display: flex;
+}
+
+/* 1.1. code de prommotion
+========================================================================== */
+#promo_code {
+  display: flex;
+  height: 37px;
+  width: 460px;
+  padding: 0 20px 0 40px;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--dark_blue);
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+#promo_code p {
+  position: relative;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+}
+
+#promo_code p::before {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  left: -30px;
+  background: url("../../images/spritesheet2.svg") -80px 0px;
+  background-size: 140px;
+  content: "";
+}
+
+#promo_code form {
+  display: flex;
+  width: 100%;
+  padding: 0 0 0 10px;
+  justify-content: flex-end;
+}
+
+#promo_code input {
+  height: 30px;
+  width: 140px;
+  padding: 0 0 0 10px;
+  border: 2px solid white;
+  border-radius: 7px;
+  background-color: transparent;
+  color: white;
+}
+
+#promo_code input::placeholder {
+  color: white;
+}
+
+/* 1.2. prixfinal
+========================================================================== */
+#div_prixfinal {
+  display: grid;
+  margin: 20px 0 0 auto;
+  grid-template-columns: repeat(4, 60px);
+  grid-column-gap: 20px;
+  grid-template-areas: "sb_label_subTotal sb_label_subTotal sb_subTotal sb_subTotal" "strokeA strokeA strokeA strokeA" "sb_label_tva sb_label_tva sb_tva sb_tva" "strokeB strokeB strokeB strokeB" "sb_label_total sb_label_total sb_total sb_total" ". sb_validation sb_validation sb_validation";
+}
+
+#div_prixfinal p {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+#div_prixfinal p:nth-child(1) {
+  grid-area: sb_label_subTotal;
+}
+
+#div_prixfinal p:nth-child(2) {
+  grid-area: sb_subTotal;
+}
+
+#div_prixfinal p:nth-child(4) {
+  grid-area: sb_label_tva;
+}
+
+#div_prixfinal p:nth-child(5) {
+  grid-area: sb_tva;
+}
+
+#div_prixfinal p:nth-child(7) {
+  font-size: 20px;
+  font-weight: 600;
+  grid-area: sb_label_total;
+}
+
+#div_prixfinal p:nth-child(8) {
+  font-size: 20px;
+  font-weight: 600;
+  grid-area: sb_total;
+}
+
+.stroke1 {
+  height: 2px;
+  width: 100%;
+  background-color: #C6C6C6;
+  grid-area: strokeA;
+}
+
+.stroke2 {
+  height: 2px;
+  width: 100%;
+  background-color: #C6C6C6;
+  grid-area: strokeB;
+}
+
+#div_prixfinal form {
+  grid-area: sb_validation;
+}
+
+#div_prixfinal input {
+  display: flex;
+  height: 47px;
+  width: 100%;
+  margin: 20px 0 40px 0;
+  justify-content: center;
+  border: none;
+  border-radius: 7px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0px 5px 4px rgba(19, 38, 57, 0.5);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+  background: var(--blue);
+}
+
+/* ==========================================================================
+   2. SHOPPINGCART ITEMS
+========================================================================== */
+#shopBasket_items article {
+  display: flex;
+  margin: 20px 0 20px 0;
+  position: relative;
+}
+
+#shopBasket_items article:hover::after {
+  height: 26px;
+  width: 26px;
+  position: absolute;
+  top: -13px;
+  right: -13px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: var(--red);
+  background-image: url(../../images/croix_blanc.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 65%;
+  content: "";
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+}
+
+#shopBasket_items article:hover {
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+#shopBasket_items article img {
+  height: 220px;
+  margin-right: 20px;
+}
+
+.sb_info {
+  max-width: 460px;
+  margin-right: 20px;
+}
+
+.sb_nom {
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.sb_marque {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.sb_description {
+  display: -webkit-box;
+  line-height: 1.2em;
+  text-overflow: ellipsis;
+  margin-bottom: 20px;
+  overflow: hidden;
+  /* nbr de ligne de texte à afficher */
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.sb_livraison {
+  position: relative;
+  font-size: 12px;
+  color: var(--green);
+  margin-bottom: 20px;
+}
+
+.sb_livraison::after {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: -2px;
+  background-image: url(../../images/spritesheet2.svg);
+  background-size: 140px;
+  content: " ";
+  margin-left: 10px;
+}
+
+/* 2.1. prix
+========================================================================== */
+.sb_prix {
+  display: flex;
+}
+
+.sb_prix p {
+  height: fit-content;
+  width: 140px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.sb_prix div {
+  display: flex;
+  width: 140px;
+  margin: 0 20px;
+  justify-content: center;
+}
+
+.sb_prix input {
+  height: 27px;
+  width: 43px;
+  border: 2px solid var(--dark_blue);
+  border-radius: 7px;
+  margin-top: 15px;
+}
