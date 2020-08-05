@@ -4,3 +4,21 @@ $border_radius-right: 0 $border_radius $border_radius 0;
 $button_height: 47px;
 $button_box_shadow: 0px 5px 4px rgba(19, 38, 57, 0.5);
 $button_border_bottom: 2px solid rgba(0, 0, 0, 0.25);
+$icon_width: 20px;
+
+:root {
+    /* couleur */
+    --orange: rgb(244, 151, 35);
+    --blue: rgb(77, 144, 205);
+    --blue50Percent: rgba(77, 144, 205, 0.5);
+    --dark_blue: rgb(30, 60, 90);
+    --green: #2EAF16;
+    --yellow: #FDC938;
+    --red: #F00C00;
+    --dark: #05182A;
+    /* fonts */
+    --font_regular: 400;
+    --font_bold: 700;
+    /* autres */
+    --radius: 7px;
+}

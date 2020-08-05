@@ -32,26 +32,22 @@ header {
    0. HEADER-DIV1
 ========================================================================== */
 .header-div1 {
-    display: grid;
     height: 95px;
     width: 100%;
     align-items: center;
     justify-content: center;
     background-color: var(--dark_blue);
-    grid-template-columns: repeat(15, 60px);
-    grid-column-gap: 20px;
+    @include grid_15;
     grid-template-areas: "logo logo logo sbar sbar sbar sbar sbar sbar sbar sbar panier panier utilisateur utilisateur";
 }
 
 .header2-div1 {
-    display: grid;
     height: 95px;
     width: 100%;
     align-items: center;
     justify-content: center;
     background-color: var(--dark_blue);
-    grid-template-columns: repeat(15, 60px);
-    grid-column-gap: 20px;
+    @include grid_15;
     grid-template-areas: "logo logo logo . . . . . . retour retour retour retour utilisateur utilisateur";
 }
 
@@ -69,7 +65,7 @@ h1 {
     input {
         height: 47px;
         width: 573px;
-        @include searchbar_style;
+        @include searchbar;
     }
 
     button {
@@ -82,15 +78,12 @@ h1 {
         }
 
         &::after {
-            $width: 32px;
-            height: $width;
-            width: $width;
-            position: absolute;
+            $icon_width: 32px;
             top: 7px;
             left: 7px;
-            background: url('../../images/spritesheet2.svg') -5*$width -2*$width;
-            background-size: 7*$width;
-            content: "";
+            background: url('../../images/spritesheet2.svg') -5*$icon_width -2*$icon_width;
+            @include icon_big;
+
         }
     }
 
@@ -121,15 +114,11 @@ h1 {
         color: var(--dark);
 
         &::after {
-            $width: 32px;
-            height: $width;
-            width: $width;
-            position: absolute;
+            $icon_width: 32px;
             top: -7px;
             right: -30px;
-            background: url('../../images/spritesheet2.svg') -6*$width -2*$width;
-            background-size: 7*$width;
-            content: "";
+            background: url('../../images/spritesheet2.svg') -6*$icon_width -2*$icon_width;
+            @include icon_big;
         }
     }
 
@@ -208,14 +197,9 @@ h1 {
     }
 
     &::before {
-        $width: 20px;
-        height: $width;
-        width: $width;
-        position: absolute;
         left: 10px;
-        background: url(../../images/spritesheet2.svg) 0*$width -3*$width;
-        background-size: $width*7;
-        content: "";
+        background: url(../../images/spritesheet2.svg) 0*$icon_width -3*$icon_width;
+        @include icon_small;
         transform: rotate(90deg);
     }
 }
@@ -247,14 +231,10 @@ h1 {
         padding-left: 10px;
 
         &::before {
-            height: 20px;
-            width: 20px;
-            position: absolute;
             top: -2px;
             left: -20px;
-            background: url('../../images/spritesheet2.svg') -20px -20px;
-            background-size: 140px;
-            content: "";
+            background: url('../../images/spritesheet2.svg') -1*$icon_width -1*$icon_width;
+            @include icon_small;
 
         }
     }
@@ -281,14 +261,12 @@ h1 {
 2. HEADER-DIV3
 ========================================================================== */
 .header-div3 {
-    display: grid;
     height: 56px;
     width: 100%;
     justify-content: center;
     box-shadow: 0px 2px 2px rgba(19, 38, 57, 0.5);
     background-color: var(--blue);
-    grid-template-columns: repeat(15, 60px);
-    grid-column-gap: 20px;
+    @include grid_15;
     grid-template-areas: "cat cat compte compte lang lang pages pages pages pages . . . . .";
 }
 
@@ -357,13 +335,8 @@ h1 {
 }
 
 header .dropbtn p::after {
-    $width: 20px;
-    height: $width;
-    width: $width;
-    position: absolute;
-    background: url('../../images/spritesheet2.svg') -0*$width -3*$width;
-    background-size: $width*7;
-    content: "";
+    background: url('../../images/spritesheet2.svg') -0*$icon_width -3*$icon_width;
+    @include icon_small;
     margin-left: 10px;
 }
 

@@ -15,7 +15,6 @@ Summary:
     - 2.1. prix
 */
 
-
 /* ==========================================================================
    0. SHOPPINGCART
 ========================================================================== */
@@ -97,13 +96,13 @@ Summary:
     white-space: nowrap;
 
     &::before {
-        $width: 20px;
-        height: $width;
-        width: $width;
+        $icon_width: 20px;
+        height: $icon_width;
+        width: $icon_width;
         position: absolute;
-        left: -10px+$width*-1;
-        background: url('../../images/spritesheet2.svg') -4*$width -0*$width;
-        background-size: $width*7;
+        left: -10px+$icon_width*-1;
+        background: url('../../images/spritesheet2.svg') -4*$icon_width -0*$icon_width;
+        background-size: $icon_width*7;
         content: "";
     }
 }
@@ -121,7 +120,6 @@ Summary:
     width: 140px;
     padding: 0 0 0 10px;
     border: 2px solid white;
-    border-radius: 7px;
     background-color: transparent;
     color: white;
 }

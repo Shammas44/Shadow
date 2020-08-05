@@ -49,18 +49,66 @@
 }
 
 // ==========================================================================
-//   1. DESCRIPTION
+//   1. SEARCHBAR
 // ==========================================================================
 
-@mixin searchbar_style {
+@mixin searchbar {
     padding: 0 20px;
     border: none;
-    border-width: 2px;
     background-color: white;
     font-size: 24px;
     color: #1e1e1c;
     cursor: text;
 }
 
-// comment
+@mixin searchbar_small {
+    padding: 0 20px;
+    border: none;
+    background-color: white;
+    font-size: 14px;
+    color: #1e1e1c;
+    cursor: text;
+}
+
 // ==========================================================================
+//   2. GRID
+// ==========================================================================
+
+@mixin grid_15 {
+    display: grid;
+    grid-template-columns: repeat(15, 60px);
+    grid-column-gap: 20px;
+}
+
+@mixin grid_5 {
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    grid-column-gap: 20px;
+}
+
+@mixin grid_4 {
+    display: grid;
+    grid-template-columns: repeat(4, 60px);
+    grid-column-gap: 20px;
+}
+
+// ==========================================================================
+//   3. ICONES
+// ==========================================================================
+
+@mixin icon_small {
+    height: $icon_width;
+    width: $icon_width;
+    position: absolute;
+    background-size: $icon_width*7;
+    content: "";
+}
+
+@mixin icon_big {
+    $icon_width: 32px;
+    height: $icon_width;
+    width: $icon_width;
+    position: absolute;
+    background-size: $icon_width*7;
+    content: "";
+}

@@ -38,11 +38,9 @@ footer {
 0. FOOTER-DIV1
 ========================================================================== */
 .footer-div1 {
-    display: grid;
     height: 294px;
     justify-content: center;
-    grid-template-columns: repeat(15, 60px);
-    column-gap: 20px;
+    @include grid_15;
     grid-template-areas:
         "social social social social . news news news news news . contact contact contact contact"
         "payement payement payement payement payement payement payement payement payement payement payement payement payement payement payement";
@@ -59,10 +57,8 @@ footer {
 /* 0.1. newsletter
 ========================================================================== */
 #newsletter {
-    display: grid;
     text-align: center;
-    grid-template-columns: repeat(5, 60px);
-    grid-column-gap: 20px;
+    @include grid_5;
     grid-area: news;
     grid-template-areas:
         "newsTitle newsTitle newsTitle newsTitle newsTitle"
@@ -82,22 +78,18 @@ footer {
     width: calc(100% - 47px);
     box-sizing: border-box;
     grid-area: newsInput;
-    @include searchbar_style;
+    @include searchbar;
 }
 
 #newsletter button {
     @include squareButton_submit;
 
     &::after {
-        content: "";
-        position: absolute;
-        $width: 32px;
-        width: $width;
-        height: $width;
-        background: url(../../images/spritesheet2.svg) -2*$width -4*$width;
-        background-size: 7*$width;
-        left: (47px - $width)/2;
-        top: (47px - $width)/2;
+        $icon_width: 32px;
+        background: url(../../images/spritesheet2.svg) -2*$icon_width -4*$icon_width;
+        @include icon_big;
+        left: (47px - $icon_width)/2;
+        top: (47px - $icon_width)/2;
     }
 }
 
@@ -114,10 +106,8 @@ footer {
 /* 0.2. résaux sociaux
 ========================================================================== */
 .socialMedia {
-    display: grid;
     text-align: center;
-    grid-template-columns: repeat(4, 60px);
-    grid-column-gap: 20px;
+    @include grid_4;
     grid-area: social;
     grid-template-areas:
         "smTitle smTitle smTitle smTitle"
@@ -221,11 +211,9 @@ footer {
 /* 0.3. contact
 ========================================================================== */
 .contact {
-    display: grid;
     text-align: center;
-    grid-template-columns: repeat(4, 60px);
-    grid-column-gap: 20px;
     grid-area: contact;
+    @include grid_4;
     grid-template-areas:
         "contactTitle contactTitle contactTitle contactTitle"
         "contactP contactP contactP contactP"
@@ -254,12 +242,10 @@ footer {
 /* 0.4. payement
 ========================================================================== */
 .payement {
-    display: grid;
     align-items: center;
     text-align: center;
     color: white;
-    grid-template-columns: repeat(15, 60px);
-    grid-column-gap: 20px;
+    @include grid_15;
     grid-area: payement;
     grid-template-areas:
         "payementP payementP payementP payementP . visa visa mastercard mastercard maestro maestro paypal paypal post post";
@@ -370,14 +356,12 @@ footer {
 1. FOOTER-DIV2
 ========================================================================== */
 .footer-div2 {
-    display: grid;
     height: 56px;
     width: 100%;
     align-items: center;
     justify-content: center;
     background-color: var(--blue);
-    grid-template-columns: repeat(15, 60px);
-    column-gap: 20px;
+    @include grid_15;
     grid-template-areas:
         "copyright copyright copyright copyright . lawA lawA lawB lawB lawC lawC lawC lawD lawD lawD";
     order: 1;
