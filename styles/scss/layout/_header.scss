@@ -73,15 +73,8 @@ h1 {
     }
 
     button {
-        height: 47px;
-        width: 47px;
-        margin: auto 0px;
-        position: relative;
-        border: none;
-        border-radius: 0px 7px 7px 0px;
-        cursor: pointer;
         float: right;
-        @include button_style;
+        @include squareButton_submit;
 
         &:active {
             box-shadow: none;
@@ -109,19 +102,8 @@ h1 {
 /* 0.2. Button panier
 ========================================================================== */
 .btnPanier {
-    display: flex;
-    height: 47px;
-    width: 100%;
-    margin: auto 0px;
-    position: relative;
-    border-radius: 7px;
-    border-width: initial;
-    border-style: none;
-    border-color: initial;
-    border-image: initial;
     grid-area: panier;
-    cursor: pointer;
-    @include button_style;
+    @include button_link;
 
     &:active {
         box-shadow: none;
@@ -214,18 +196,9 @@ h1 {
 ========================================================================== */
 .btnRetour {
     display: flex;
-    height: 47px;
     padding: 0 0 0 20px;
-    position: relative;
     align-items: center;
-    border: none;
-    border-radius: 7px;
-    font-size: 18px;
-    font-weight: 700;
-    text-align: center;
-    color: white;
     grid-area: retour;
-    cursor: pointer;
     flex-direction: row;
     @include button_style;
 

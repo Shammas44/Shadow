@@ -199,17 +199,9 @@ Summary:
 
 #div_prixfinal input {
     display: flex;
-    height: 47px;
     width: 100%;
     margin: 20px 0 40px 0;
     justify-content: center;
-    border: none;
-    border-radius: 7px;
-    font-size: 18px;
-    font-weight: 600;
-    text-align: center;
-    color: white;
-    cursor: pointer;
     @include button_style;
 }
 

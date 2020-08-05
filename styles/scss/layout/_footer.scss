@@ -86,16 +86,7 @@ footer {
 }
 
 #newsletter button {
-    height: 47px;
-    width: 47px;
-    position: relative;
-    border-radius: 0 7px 7px 0;
-    border-width: initial;
-    border-style: none;
-    border-color: initial;
-    border-image: initial;
-    cursor: pointer;
-    @include button_style;
+    @include squareButton_submit;
 
     &::after {
         content: "";

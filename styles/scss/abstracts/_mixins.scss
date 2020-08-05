@@ -1,8 +1,56 @@
+// ==========================================================================
+//   0. BUTTON
+// ==========================================================================
 @mixin button_style {
-    box-shadow: 0px 5px 4px hsla(210, 50%, 15%, 0.5);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+    height: $button_height;
+    position: relative;
+    border-radius: $border_radius;
     background: var(--blue);
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    box-shadow: $button_box_shadow;
+    border-bottom: $button_border_bottom;
 }
+
+@mixin button_submit {
+    display: flex;
+    height: $button_height;
+    position: relative;
+    border-radius: $border_radius;
+    background: var(--blue);
+    cursor: pointer;
+    box-shadow: $button_box_shadow;
+    border-bottom: $button_border_bottom;
+}
+
+@mixin squareButton_submit {
+    height: $button_height;
+    width: $button_height;
+    position: relative;
+    border: none;
+    border-radius: $border_radius_right;
+    background: var(--blue);
+    cursor: pointer;
+    box-shadow: $button_box_shadow;
+    border-bottom: $button_border_bottom;
+}
+
+@mixin button_link {
+    display: flex;
+    height: 47px;
+    position: relative;
+    border-radius: $border_radius;
+    background: var(--blue);
+    cursor: pointer;
+    box-shadow: $button_box_shadow;
+    border-bottom: $button_border_bottom;
+}
+
+// ==========================================================================
+//   1. DESCRIPTION
+// ==========================================================================
 
 @mixin searchbar_style {
     padding: 0 20px;
@@ -13,3 +61,6 @@
     color: #1e1e1c;
     cursor: text;
 }
+
+// comment
+// ==========================================================================
