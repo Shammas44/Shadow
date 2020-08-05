@@ -1,0 +1,6 @@
+*.tmp
+maquette
+nbproject
+shadow.sublime-workspace
+html
+launch.json
