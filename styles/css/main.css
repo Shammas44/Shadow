@@ -249,11 +249,6 @@ a {
 }
 
 /**
-Description: Header CSS
-Version: 1.0.0
-Last update: YYYY/MM/DD
-Author: User Name <contact@sebastientraber.com>
-
 Summary:
 
 0. HEADER-DIV1
@@ -347,10 +342,10 @@ h1 {
 .searchContainer button::after {
   top: 7px;
   left: 7px;
-  background: url("../../images/spritesheet2.svg") -160px -64px;
   height: 32px;
   width: 32px;
   position: absolute;
+  background: url("../../images/spritesheet2.svg") -160px -64px transparent;
   background-size: 224px;
   content: "";
 }
@@ -363,11 +358,16 @@ h1 {
 ========================================================================== */
 .btnPanier {
   grid-area: panier;
+  width: 100%;
   display: flex;
   height: 47px;
   position: relative;
   border-radius: 7px;
   background: var(--blue);
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
   cursor: pointer;
   box-shadow: 0px 5px 4px rgba(19, 38, 57, 0.5);
   border-bottom: 2px solid rgba(0, 0, 0, 0.25);
@@ -376,28 +376,26 @@ h1 {
 .btnPanier:active {
   box-shadow: none;
   border-bottom: none;
-  border-top: none;
+}
+
+.btnPanier::after {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  background: url("../../images/spritesheet2.svg") -192px -64px transparent;
+  background-size: 224px;
+  content: "";
+  top: 7.5px;
+  right: 10px;
 }
 
 .btnPanier .btnPanier-prix {
   width: 70%;
   margin: auto 0;
   padding: 0 0 0 10px;
-  position: relative;
   font-size: 14px;
   font-weight: var(--font_bold);
   color: var(--dark);
-}
-
-.btnPanier .btnPanier-prix::after {
-  top: -7px;
-  right: -30px;
-  background: url("../../images/spritesheet2.svg") -192px -64px;
-  height: 32px;
-  width: 32px;
-  position: absolute;
-  background-size: 224px;
-  content: "";
 }
 
 .btnPanier .nbrPanier {
@@ -464,10 +462,12 @@ h1 {
   align-items: center;
   grid-area: retour;
   flex-direction: row;
+  display: flex;
   height: 47px;
   position: relative;
   border-radius: 7px;
   background: var(--blue);
+  border: none;
   font-size: 18px;
   font-weight: 700;
   color: white;
@@ -482,10 +482,10 @@ h1 {
 
 .btnRetour::before {
   left: 10px;
-  background: url(../../images/spritesheet2.svg) 0px -60px;
   height: 20px;
   width: 20px;
   position: absolute;
+  background: url("../../images/spritesheet2.svg") 0px -60px transparent;
   background-size: 140px;
   content: "";
   transform: rotate(90deg);
@@ -522,10 +522,10 @@ h1 {
 .avantage p::before {
   top: -2px;
   left: -20px;
-  background: url("../../images/spritesheet2.svg") -20px -20px;
   height: 20px;
   width: 20px;
   position: absolute;
+  background: url("../../images/spritesheet2.svg") -20px -20px transparent;
   background-size: 140px;
   content: "";
 }
@@ -627,10 +627,10 @@ h1 {
 }
 
 header .dropbtn p::after {
-  background: url("../../images/spritesheet2.svg") 0px -60px;
   height: 20px;
   width: 20px;
   position: absolute;
+  background: url("../../images/spritesheet2.svg") 0px -60px transparent;
   background-size: 140px;
   content: "";
   margin-left: 10px;
@@ -669,11 +669,6 @@ header .dropbtn p::after {
 }
 
 /**
-Description: Footer CSS
-Version: 1.0.0
-Last update: YYYY/MM/DD
-Author: User Name <contact@sebastientraber.com>
-
 Summary:
 
 0. FOOTER-DIV1
@@ -767,10 +762,10 @@ footer {
 }
 
 #newsletter button::after {
-  background: url(../../images/spritesheet2.svg) -64px -128px;
   height: 32px;
   width: 32px;
   position: absolute;
+  background: url("../../images/spritesheet2.svg") -64px -128px transparent;
   background-size: 224px;
   content: "";
   left: 7.5px;
@@ -966,8 +961,7 @@ footer {
 }
 
 .payement a:nth-child(2) img:hover {
-  background: url(../../images/spritesheet.svg) var(--blue);
-  background-position: 0 -210px;
+  background: url(../../images/spritesheet.svg) var(--blue) 0 -210px;
 }
 
 /* 0.4.2. mastercard
@@ -981,8 +975,7 @@ footer {
 }
 
 .payement a:nth-child(3) img:hover {
-  background: url(../../images/spritesheet.svg) var(--blue);
-  background-position: 0 -390px;
+  background: url(../../images/spritesheet.svg) 0 -390px var(--blue);
 }
 
 /* 0.4.3. maestro
@@ -996,8 +989,7 @@ footer {
 }
 
 .payement a:nth-child(4) img:hover {
-  background: url(../../images/spritesheet.svg) var(--blue);
-  background-position: -140px -210px;
+  background: url(../../images/spritesheet.svg) -140px -210px var(--blue);
 }
 
 /* 0.4.4. paypal
@@ -1011,8 +1003,7 @@ footer {
 }
 
 .payement a:nth-child(5) img:hover {
-  background: url(../../images/spritesheet.svg) var(--blue);
-  background-position: -140px -390px;
+  background: url(../../images/spritesheet.svg) -140px -390px var(--blue);
 }
 
 /* 0.4.5. poste
@@ -1026,8 +1017,7 @@ footer {
 }
 
 .payement a:nth-child(6) img:hover {
-  background: url(../../images/spritesheet.svg) var(--blue);
-  background-position: -140px -480px;
+  background: url(../../images/spritesheet.svg) -140px -480px var(--blue);
 }
 
 .payement a {
@@ -1059,6 +1049,10 @@ footer {
 
 .footer-div2 a {
   text-decoration: underline;
+}
+
+.footer-div2 a:hover {
+  color: var(--dark);
 }
 
 .footer-div2 p {
@@ -1824,7 +1818,7 @@ Summary:
   font-weight: 700;
 }
 
-input[type="number"] {
+#produit_panier input[type="number"] {
   grid-area: btnA;
   width: 43px;
   border: 2px solid var(--blue);
@@ -1832,18 +1826,25 @@ input[type="number"] {
   margin: 0 auto;
 }
 
-input[type="submit"] {
+#produit_panier input[type="submit"] {
   grid-area: btnB;
-  background-color: var(--blue);
-  font-size: 15px;
-  color: white;
-  font-weight: 700;
-  align-items: center;
   display: flex;
   height: 28px;
-  padding: 0 auto !important;
+  position: relative;
+  border-radius: 7px;
+  background: var(--blue);
   border: none;
-  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0px 5px 4px rgba(19, 38, 57, 0.5);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+#produit_panier input[type="submit"]:active {
+  box-shadow: none;
+  border-bottom: none;
 }
 
 .div_dispo {
@@ -2080,10 +2081,12 @@ Summary:
   width: 100%;
   margin: 20px 0 40px 0;
   justify-content: center;
+  display: flex;
   height: 47px;
   position: relative;
   border-radius: 7px;
   background: var(--blue);
+  border: none;
   font-size: 18px;
   font-weight: 700;
   color: white;
@@ -2102,20 +2105,18 @@ Summary:
 }
 
 #shopBasket_items article:hover::after {
-  height: 26px;
-  width: 26px;
-  position: absolute;
   top: -13px;
   right: -13px;
   border: 2px solid white;
   border-radius: 50%;
-  background-color: var(--red);
-  background-image: url(../../images/croix_blanc.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 65%;
+  height: 26px;
+  width: 26px;
+  position: absolute;
+  background: url("../../images/spritesheet2.svg") -78px -78px var(--red);
+  background-size: 182px;
   content: "";
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+  box-sizing: content-box;
 }
 
 #shopBasket_items article:hover {

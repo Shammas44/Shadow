@@ -1,71 +1,47 @@
 // ==========================================================================
 //   0. BUTTON
 // ==========================================================================
-@mixin button_style {
-    height: $button_height;
+@mixin button($height: 47px, $font_size: 18px) {
+    display: flex;
+    height: $height;
     position: relative;
-    border-radius: $border_radius;
+    border-radius: $__border_radius;
     background: var(--blue);
-    font-size: 18px;
+    border: none;
+    font-size: $font_size;
     font-weight: 700;
     color: white;
     cursor: pointer;
-    box-shadow: $button_box_shadow;
-    border-bottom: $button_border_bottom;
+    box-shadow: $__button_box_shadow;
+    border-bottom: $__button_border_bottom;
 }
 
-@mixin button_submit {
-    display: flex;
-    height: $button_height;
-    position: relative;
-    border-radius: $border_radius;
-    background: var(--blue);
-    cursor: pointer;
-    box-shadow: $button_box_shadow;
-    border-bottom: $button_border_bottom;
+@mixin button_active {
+    box-shadow: none;
+    border-bottom: none;
 }
 
-@mixin squareButton_submit {
+@mixin squareButton($button_height: 47px) {
     height: $button_height;
     width: $button_height;
     position: relative;
     border: none;
-    border-radius: $border_radius_right;
+    border-radius: 0 $__border_radius $__border_radius 0;
     background: var(--blue);
     cursor: pointer;
-    box-shadow: $button_box_shadow;
-    border-bottom: $button_border_bottom;
-}
-
-@mixin button_link {
-    display: flex;
-    height: 47px;
-    position: relative;
-    border-radius: $border_radius;
-    background: var(--blue);
-    cursor: pointer;
-    box-shadow: $button_box_shadow;
-    border-bottom: $button_border_bottom;
+    box-shadow: $__button_box_shadow;
+    border-bottom: $__button_border_bottom;
 }
 
 // ==========================================================================
 //   1. SEARCHBAR
 // ==========================================================================
 
-@mixin searchbar {
+@mixin searchbar($font_size: 24px) {
     padding: 0 20px;
     border: none;
     background-color: white;
-    font-size: 24px;
-    color: #1e1e1c;
-    cursor: text;
-}
-
-@mixin searchbar_small {
-    padding: 0 20px;
-    border: none;
-    background-color: white;
-    font-size: 14px;
+    font-size: $font_size;
     color: #1e1e1c;
     cursor: text;
 }
@@ -74,21 +50,9 @@
 //   2. GRID
 // ==========================================================================
 
-@mixin grid_15 {
+@mixin grid($nbr_column: 15) {
     display: grid;
-    grid-template-columns: repeat(15, 60px);
-    grid-column-gap: 20px;
-}
-
-@mixin grid_5 {
-    display: grid;
-    grid-template-columns: repeat(5, 60px);
-    grid-column-gap: 20px;
-}
-
-@mixin grid_4 {
-    display: grid;
-    grid-template-columns: repeat(4, 60px);
+    grid-template-columns: repeat($nbr_column, 60px);
     grid-column-gap: 20px;
 }
 
@@ -96,19 +60,11 @@
 //   3. ICONES
 // ==========================================================================
 
-@mixin icon_small {
+@mixin icon($icon_width: 20px, $x: 0px, $y: 0px, $color: transparent) {
     height: $icon_width;
     width: $icon_width;
     position: absolute;
-    background-size: $icon_width*7;
-    content: "";
-}
-
-@mixin icon_big {
-    $icon_width: 32px;
-    height: $icon_width;
-    width: $icon_width;
-    position: absolute;
+    background: url('../../images/spritesheet2.svg') -1*$x*$icon_width -1*$y*$icon_width $color;
     background-size: $icon_width*7;
     content: "";
 }

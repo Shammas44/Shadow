@@ -200,7 +200,7 @@ Summary:
     width: 100%;
     margin: 20px 0 40px 0;
     justify-content: center;
-    @include button_style;
+    @include button;
 }
 
 /* ==========================================================================
@@ -212,20 +212,14 @@ Summary:
     position: relative;
 
     &:hover::after {
-        height: 26px;
-        width: 26px;
-        position: absolute;
+
         top: -13px;
         right: -13px;
         border: 2px solid white;
         border-radius: 50%;
-        background-color: var(--red);
-        background-image: url(../../images/croix_blanc.svg);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 65%;
-        content: "";
+        @include icon($icon_width: 26px, $x:3, $y:3, $color:var(--red));
         box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+        box-sizing: content-box;
     }
 
     &:hover {

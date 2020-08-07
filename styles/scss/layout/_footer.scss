@@ -1,9 +1,4 @@
 /**
-Description: Footer CSS
-Version: 1.0.0
-Last update: YYYY/MM/DD
-Author: User Name <contact@sebastientraber.com>
-
 Summary:
 
 0. FOOTER-DIV1
@@ -40,7 +35,7 @@ footer {
 .footer-div1 {
     height: 294px;
     justify-content: center;
-    @include grid_15;
+    @include grid;
     grid-template-areas:
         "social social social social . news news news news news . contact contact contact contact"
         "payement payement payement payement payement payement payement payement payement payement payement payement payement payement payement";
@@ -58,7 +53,7 @@ footer {
 ========================================================================== */
 #newsletter {
     text-align: center;
-    @include grid_5;
+    @include grid($nbr_column: 5);
     grid-area: news;
     grid-template-areas:
         "newsTitle newsTitle newsTitle newsTitle newsTitle"
@@ -82,12 +77,11 @@ footer {
 }
 
 #newsletter button {
-    @include squareButton_submit;
+    @include squareButton;
 
     &::after {
         $icon_width: 32px;
-        background: url(../../images/spritesheet2.svg) -2*$icon_width -4*$icon_width;
-        @include icon_big;
+        @include icon($icon_width: 32px, $x:2, $y:4);
         left: (47px - $icon_width)/2;
         top: (47px - $icon_width)/2;
     }
@@ -107,7 +101,7 @@ footer {
 ========================================================================== */
 .socialMedia {
     text-align: center;
-    @include grid_4;
+    @include grid($nbr_column: 4);
     grid-area: social;
     grid-template-areas:
         "smTitle smTitle smTitle smTitle"
@@ -213,7 +207,7 @@ footer {
 .contact {
     text-align: center;
     grid-area: contact;
-    @include grid_4;
+    @include grid($nbr_column: 4);
     grid-template-areas:
         "contactTitle contactTitle contactTitle contactTitle"
         "contactP contactP contactP contactP"
@@ -245,7 +239,7 @@ footer {
     align-items: center;
     text-align: center;
     color: white;
-    @include grid_15;
+    @include grid;
     grid-area: payement;
     grid-template-areas:
         "payementP payementP payementP payementP . visa visa mastercard mastercard maestro maestro paypal paypal post post";
@@ -284,8 +278,7 @@ footer {
 }
 
 .payement a:nth-child(2) img:hover {
-    background: url(../../images/spritesheet.svg) var(--blue);
-    background-position: 0 -210px;
+    background: url(../../images/spritesheet.svg) var(--blue) 0 -210px;
 }
 
 /* 0.4.2. mastercard
@@ -299,8 +292,7 @@ footer {
 }
 
 .payement a:nth-child(3) img:hover {
-    background: url(../../images/spritesheet.svg) var(--blue);
-    background-position: 0 -390px;
+    background: url(../../images/spritesheet.svg) 0 -390px var(--blue);
 }
 
 /* 0.4.3. maestro
@@ -314,8 +306,7 @@ footer {
 }
 
 .payement a:nth-child(4) img:hover {
-    background: url(../../images/spritesheet.svg) var(--blue);
-    background-position: -140px -210px;
+    background: url(../../images/spritesheet.svg) -140px -210px var(--blue);
 }
 
 /* 0.4.4. paypal
@@ -329,8 +320,7 @@ footer {
 }
 
 .payement a:nth-child(5) img:hover {
-    background: url(../../images/spritesheet.svg) var(--blue);
-    background-position: -140px -390px;
+    background: url(../../images/spritesheet.svg) -140px -390px var(--blue);
 }
 
 /* 0.4.5. poste
@@ -344,8 +334,7 @@ footer {
 }
 
 .payement a:nth-child(6) img:hover {
-    background: url(../../images/spritesheet.svg) var(--blue);
-    background-position: -140px -480px;
+    background: url(../../images/spritesheet.svg) -140px -480px var(--blue);
 }
 
 .payement a {
@@ -361,7 +350,7 @@ footer {
     align-items: center;
     justify-content: center;
     background-color: var(--blue);
-    @include grid_15;
+    @include grid;
     grid-template-areas:
         "copyright copyright copyright copyright . lawA lawA lawB lawB lawC lawC lawC lawD lawD lawD";
     order: 1;
@@ -376,6 +365,10 @@ footer {
 
 .footer-div2 a {
     text-decoration: underline;
+}
+
+.footer-div2 a:hover {
+    color: var(--dark);
 }
 
 .footer-div2 p {

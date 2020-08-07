@@ -1,9 +1,4 @@
 /**
-Description: Header CSS
-Version: 1.0.0
-Last update: YYYY/MM/DD
-Author: User Name <contact@sebastientraber.com>
-
 Summary:
 
 0. HEADER-DIV1
@@ -27,7 +22,6 @@ header {
     right: 0;
 }
 
-
 /* ==========================================================================
    0. HEADER-DIV1
 ========================================================================== */
@@ -37,7 +31,7 @@ header {
     align-items: center;
     justify-content: center;
     background-color: var(--dark_blue);
-    @include grid_15;
+    @include grid;
     grid-template-areas: "logo logo logo sbar sbar sbar sbar sbar sbar sbar sbar panier panier utilisateur utilisateur";
 }
 
@@ -47,7 +41,7 @@ header {
     align-items: center;
     justify-content: center;
     background-color: var(--dark_blue);
-    @include grid_15;
+    @include grid;
     grid-template-areas: "logo logo logo . . . . . . retour retour retour retour utilisateur utilisateur";
 }
 
@@ -70,19 +64,16 @@ h1 {
 
     button {
         float: right;
-        @include squareButton_submit;
+        @include squareButton;
 
         &:active {
-            box-shadow: none;
-            border-bottom: none;
+            @include button_active;
         }
 
         &::after {
-            $icon_width: 32px;
             top: 7px;
             left: 7px;
-            background: url('../../images/spritesheet2.svg') -5*$icon_width -2*$icon_width;
-            @include icon_big;
+            @include icon($icon_width: 32px, $x: 5, $y: 2);
 
         }
     }
@@ -96,30 +87,27 @@ h1 {
 ========================================================================== */
 .btnPanier {
     grid-area: panier;
-    @include button_link;
+    width: 100%;
+    @include button;
 
     &:active {
-        box-shadow: none;
-        border-bottom: none;
-        border-top: none;
+        @include button_active;
+    }
+
+    &::after {
+        @include icon($icon_width: 32px, $x: 6, $y: 2);
+        $icon_width: 32px;
+        top: (47px - $icon_width)/2;
+        right: 10px;
     }
 
     .btnPanier-prix {
         width: 70%;
         margin: auto 0;
         padding: 0 0 0 10px;
-        position: relative;
         font-size: 14px;
         font-weight: var(--font_bold);
         color: var(--dark);
-
-        &::after {
-            $icon_width: 32px;
-            top: -7px;
-            right: -30px;
-            background: url('../../images/spritesheet2.svg') -6*$icon_width -2*$icon_width;
-            @include icon_big;
-        }
     }
 
     .nbrPanier {
@@ -179,8 +167,6 @@ h1 {
     }
 }
 
-
-
 /* 0.4. button retour
 ========================================================================== */
 .btnRetour {
@@ -189,7 +175,7 @@ h1 {
     align-items: center;
     grid-area: retour;
     flex-direction: row;
-    @include button_style;
+    @include button;
 
     p {
         padding: 0 0 0 20px;
@@ -198,8 +184,7 @@ h1 {
 
     &::before {
         left: 10px;
-        background: url(../../images/spritesheet2.svg) 0*$icon_width -3*$icon_width;
-        @include icon_small;
+        @include icon($x: 0, $y: 3);
         transform: rotate(90deg);
     }
 }
@@ -233,8 +218,7 @@ h1 {
         &::before {
             top: -2px;
             left: -20px;
-            background: url('../../images/spritesheet2.svg') -1*$icon_width -1*$icon_width;
-            @include icon_small;
+            @include icon($x: 1, $y: 1);
 
         }
     }
@@ -266,7 +250,7 @@ h1 {
     justify-content: center;
     box-shadow: 0px 2px 2px rgba(19, 38, 57, 0.5);
     background-color: var(--blue);
-    @include grid_15;
+    @include grid;
     grid-template-areas: "cat cat compte compte lang lang pages pages pages pages . . . . .";
 }
 
@@ -335,8 +319,7 @@ h1 {
 }
 
 header .dropbtn p::after {
-    background: url('../../images/spritesheet2.svg') -0*$icon_width -3*$icon_width;
-    @include icon_small;
+    @include icon($x: 0, $y: 3);
     margin-left: 10px;
 }
 

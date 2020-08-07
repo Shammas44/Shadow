@@ -172,7 +172,7 @@ Summary:
     font-weight: 700;
 }
 
-input[type="number"] {
+#produit_panier input[type="number"] {
     grid-area: btnA;
     width: 43px;
     border: 2px solid var(--blue);
@@ -180,18 +180,13 @@ input[type="number"] {
     margin: 0 auto;
 }
 
-input[type="submit"] {
+#produit_panier input[type="submit"] {
     grid-area: btnB;
-    background-color: var(--blue);
-    font-size: 15px;
-    color: white;
-    font-weight: 700;
-    align-items: center;
-    display: flex;
-    height: 28px;
-    padding: 0 auto !important;
-    border: none;
-    border-radius: 5px;
+    @include button($height: 28px, $font_size: 14px);
+
+    &:active {
+        @include button_active;
+    }
 }
 
 .div_dispo {
