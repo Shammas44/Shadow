@@ -1,5 +1,7 @@
 # Shadow c'est quoi ?
-Un site web single page permettant de filtrer des produits à la manière d'un site e-commerce. J'ai commencé ce projet en 2019 dans le but d'apprendre PHP sur mon temps libre. 
+Un site web single page permettant de filtrer des produits à la manière d'un site e-commerce. J'ai commencé ce projet en 2019 dans le but d'apprendre PHP sur mon temps libre.
+
+![presentation](/images/presentation.gif)
 
 ## Fonctionalités
 Le site permet d’afficher des produits en fonction d’un certain nombre de filtres sélectionnés, à la manière d’un site e-commerce. Par défaut, la totalité des produits présents dans la base de données sont affichés à l’utilisateur, soit 30 produits. Cependant à l’aide du panneau des filtres, les propriétés que doivent obligatoirement présenter les objets affichés, peuvent être sélectionnées au moyen des cases à cocher. A noter qu’en fonction du nombre de produits à afficher, ces derniers peuvent être répartis sur plusieurs pages. Une page étant composée de maximum 12 produits.
