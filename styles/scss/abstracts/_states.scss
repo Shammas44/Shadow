@@ -1,5 +1,9 @@
 .is-displayNone {
-    display: none !important;
+    display: none;
+}
+
+.is-displayBlock {
+    display: block;
 }
 
 .is-green {
@@ -15,34 +19,59 @@
 }
 
 .is-blue {
-    background: var(--blue);
+    background: var(--secondaryColor);
 }
 
 .is-colorOrange {
-    color: var(--orange) !important;
+    color: var(--orange);
 }
 
 .is-colorBlue {
-    color: var(--blue) !important;
+    color: var(--secondaryColor);
 }
 
 .is-colorGreen {
-    color: var(--green) !important;
+    color: var(--green);
 }
 
 .is-colorYellow {
-    color: var(--yellow) !important;
+    color: var(--yellow);
 }
 
 .is-colorWhite {
-    color: white !important;
+    color: white;
 }
 
 .is-header2 {
-    background-color: var(--blue) !important;
+    background-color: var(--secondaryColor);
     box-shadow: 0px 2px 2px rgba(19, 38, 57, 0.5);
 }
 
 .is-borderTop {
-    border-top: 2px solid var(--blue);
+    border-top: 2px solid var(--secondaryColor);
+}
+
+.is-hiddenText {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.is-hideFilter::after {
+    $width: 20px;
+    background: url('../../images/spritesheet2.svg') -1*$width*3 -1*$width*2;
+    background-size: $width*7;
+}
+
+.is-displayFlex {
+    display: flex;
+}
+
+.is-displayFlexColumn {
+    display: flex;
 }

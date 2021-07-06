@@ -1,18 +1,19 @@
+//fonts
+@import 'fonts/icomoon';
 //abstracts
 @import 'abstracts/variables';
 @import 'abstracts/mixins';
-@import 'abstracts/states';
 //base
 @import 'base/reset';
 @import 'base/base';
 //layout
 @import 'layout/header';
-@import 'layout/footer';
 //modules
-@import 'modules/slider';
 @import 'modules/productDisplay';
-//pages
-@import 'pages/produitDetails';
-@import 'pages/shoppingCart';
+@import 'modules/numberSpinner';
+//mediaQuery
+@import 'layout/mediaQuery';
+//states
+@import 'abstracts/states';
 //themes
 //vendors

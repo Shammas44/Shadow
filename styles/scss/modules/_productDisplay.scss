@@ -1,43 +1,51 @@
 /**
 Description: Product display CSS
-Version: 1.0.0
-Last update: YYYY/MM/DD
-Author: User Name <contact@sebastientraber.com>
 
 Summary:
 
-0. FILTRE
-    - 0.1. scrollbar
-1. TRIAGE
-    - 1.1. Triage : selecteur
-    - 1.2. vitrine - Disposition des produits
-    - 1.3. vitrine - Pages bas
+0. FILTER
+    - 0.1. checkmark
+    - 0.2. search-container-marque - @depreciated
+    - 0.3. scrollbar
+    - 0.4. reset button
+1. SHOWCASE
+    - 1.1. showcase sorting
+        - 1.1.1. showcase sorting data
+        - 1.1.2. sorting selector
+    - 1.2. showcase shelfs - Products display
+        - 1.2.1. div__available
+    - 1.3. showcase - Bottom page selector
 */
 
-#shop {
+.shop {
     margin-bottom: 40px;
     display: grid;
+    max-width: $_mainMaxWidth;
     justify-content: center;
-    grid-template-columns: repeat(15, 60px);
+    margin-bottom: 40px;
+    display: grid;
+    padding: 20px;
+    max-width: $_mainMaxWidth;
+    justify-content: center;
+    grid-template-columns: 220px minmax(0, $_mainMaxWidth);
     column-gap: 20px;
-    grid-template-areas:
-        "filtres filtres filtres trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits trie-produits ";
+    grid-template-areas: "filters trie-produits ";
 }
 
 /* ==========================================================================
- 0. FILTRE
+ 0. FILTER
 ========================================================================== */
-#filtres {
+.filters {
     display: flex;
     height: -moz-fit-content;
     height: fit-content;
-    background-color: var(--dark_blue);
-    grid-area: filtres;
+    background-color: var(--primaryColor);
+    grid-area: filters;
     margin-bottom: 40px;
     flex-direction: column;
 }
 
-#filtres h2 {
+.filter__title {
     height: 50px;
     padding: 15px 0;
     font-size: 17pt;
@@ -46,48 +54,29 @@ Summary:
     color: white;
 }
 
-.filtre {
+.filter {
     display: flex;
     height: 30px;
     position: relative;
     align-items: center;
-    background-color: var(--blue);
+    background-color: var(--secondaryColor);
     margin-bottom: 2px;
     border-bottom: 2px solid rgba(0, 0, 0, 0.25);
 
     &:active {
         border-bottom: none;
     }
-
-    &::after {
-        $width: 20px;
-        height: $width;
-        width: $width;
-        position: absolute;
-        right: 10px;
-        background: url('../../images/spritesheet2.svg') -1*$width*3 -1*$width*2;
-        background-size: $width*7;
-        content: "";
-    }
 }
 
-.is-displayBlock::after {
-    $width: 20px;
-    background: url('../../images/spritesheet2.svg') -1*$width*2 -1*$width*2;
-    background-size: $width*7;
+.filter [class^="icon-"] {
+    margin: 0 0 0 auto;
+    font-size: 20px;
+    color: var(--dark);
 }
 
-.filtre_last {
-    margin-bottom: 0;
-}
 
-.img_minus {
-    width: 21px;
-    position: relative;
-    left: 40px;
-}
 
-.filtre_produit h3 {
+.filter__subTitle {
     width: 150px;
     padding: 0 0 0 10px;
     font-size: 18px;
@@ -96,25 +85,31 @@ Summary:
     white-space: nowrap;
 }
 
-.filtre_liste {
+.filter__list {
     position: relative;
-    background-color: var(--dark_blue);
+    background-color: var(--primaryColor);
     font-size: 12px;
     font-weight: 400;
     color: white;
 }
 
-.filtre_liste li {
+.filter__list li {
     display: flex;
     align-items: center;
     line-height: 1.6em;
 }
 
-.filtre_liste ul {
+.filter__ul {
     padding: 10px 10px;
 }
 
-/* The container */
+.filters__reset {
+    margin: 0 0 2px 0;
+}
+
+// 0.1. checkmark
+// ==========================================================================
+
 .container {
     display: flex;
     position: relative;
@@ -126,7 +121,7 @@ Summary:
     user-select: none;
 }
 
-/* Hide the browser's default checkbox */
+//Hide the browser's default checkbox
 .container input {
     height: 0;
     width: 0;
@@ -136,7 +131,7 @@ Summary:
     opacity: 0;
 }
 
-/* Create a custom checkbox */
+//Create a custom checkbox
 .checkmark {
     display: flex;
     height: 15px;
@@ -150,19 +145,19 @@ Summary:
     margin-right: 20px;
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
+//Create the checkmark/indicator (hidden when not checked)
 .checkmark:after {
     display: none;
     position: absolute;
     content: "";
 }
 
-/* Show the checkmark when checked */
+//Show the checkmark when checked
 .container input:checked~.checkmark:after {
     display: block;
 }
 
-/* Style the checkmark/indicator */
+//Style the checkmark/indicator
 .container .checkmark:after {
     height: 10px;
     width: 5px;
@@ -174,6 +169,9 @@ Summary:
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+// 0.2. search-container-marque - @depreciated
+// ==========================================================================
 
 .search-container-marque {
     display: flex;
@@ -203,7 +201,7 @@ Summary:
     left: 185px;
 }
 
-/* 0.1. scrollbar
+/* 0.3. scrollbar
 ========================================================================= */
 .scrollbar {
     height: 150px;
@@ -217,81 +215,94 @@ Summary:
     min-height: 220px;
 }
 
-#style-1::-webkit-scrollbar-track,
-#style-2::-webkit-scrollbar-track {
+.filter__list.scrollbar::-webkit-scrollbar-track {
     border: 1px solid #c7c6c6;
     background-color: #c7c6c6;
 }
 
-#style-1::-webkit-scrollbar,
-#style-2::-webkit-scrollbar {
+.filter__list.scrollbar::-webkit-scrollbar {
     width: 15px;
     background-color: #c7c6c6;
 }
 
-#style-1::-webkit-scrollbar-thumb,
-#style-2::-webkit-scrollbar-thumb {
+.filter__list.scrollbar::-webkit-scrollbar-thumb {
     border: 1px solid #c7c6c6;
-    background-color: var(--dark_blue);
+    background-color: var(--primaryColor);
 }
 
-/* ==========================================================================
- 1. TRIAGE
- ========================================================================== */
+// 0.4. reset button
+// ==========================================================================
 
-#trie-produits {
+.filters__reset {
+    @include button($justify_content: center);
+    align-items: center;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+// ==========================================================================
+//   1. SHOWCASE SORTING
+// ==========================================================================
+.showcase {
     display: flex;
     grid-area: trie-produits;
     flex-direction: column;
+    max-width: 940px;
 }
 
-#triage {
+// 1.1. showcase sorting
+// ==========================================================================
+
+.showcase__sorting {
     display: grid;
     height: 50px;
     align-items: center;
-    background-color: var(--dark_blue);
-    grid-template-columns: repeat(12, 60px);
+    background-color: var(--primaryColor);
+    grid-template-columns: auto 1fr;
+    padding: 0 $_columnGap;
     column-gap: 20px;
     grid-area: trie;
-    grid-template-areas:
-        ". trie_btn trie_btn  trie_info trie_info trie_info trie_info trie_info trie_info trie_info trie_info trie_info ";
     order: 1;
 }
 
-#triage-info {
-    display: grid;
-    height: 100%;
+.showcase__sorting form {
+    max-width: $_columnWidth*2 + $_columnGap;
+    display: flex;
+    position: relative;
     align-items: center;
-    grid-template-columns: repeat(9, 60px);
+    justify-content: center;
+}
+
+// 1.1.1. showcase sorting data
+// ====================================== 
+.showcase__data {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(9, 1fr);
     column-gap: 20px;
-    grid-area: trie_info;
     grid-template-areas:
         "trie_value trie_value . trie_nbr trie_nbr trie_nbr trie_page trie_page trie_page";
 }
 
-#triage-info p {
+.showcase__p {
     text-align: left;
 }
 
-#triage form {
-    grid-area: trie_btn;
-}
-
-#triageValue {
+.sortingValue {
     font-size: 18px;
     font-weight: 400;
     color: white;
     grid-area: trie_value;
 }
 
-#nbrProduit {
+.nbrProducts {
     font-size: 18px;
     font-weight: 400;
     color: white;
     grid-area: trie_nbr;
 }
 
-#pages {
+.showcase__pages {
     font-size: 18px;
     font-weight: 400;
     text-align: center;
@@ -299,117 +310,93 @@ Summary:
     grid-area: trie_page;
 }
 
-#pages a {
+.showcase__page {
     text-decoration: none;
     color: white;
+    padding-right: 5px;
 }
 
-/* 1.1. Triage : selecteur 
-========================================================================= */
-.trie-btn {
+// 1.1.2. sorting selector
+// ====================================== 
+.sortingForm__button {
     display: flex;
     height: 36px;
-    width: 100%;
+    width: 140px;
     align-items: center;
     justify-content: flex-start;
-    background-color: var(--blue);
+    background-color: var(--secondaryColor);
     font-size: 18px;
     text-align: center;
     color: var(--dark);
     padding-left: 10px;
+    cursor: pointer;
 }
 
-.dropdown:hover .form-trie-content {
-    display: block;
-}
-
-#form-trie p::after {
-    content: "";
+.sortingForm__content {
+    display: none;
     position: absolute;
-    $width: 20px;
-    height: $width;
-    width: $width;
-    background: url('../../images/spritesheet2.svg') -0*$width -5*$width;
-    background-size: $width*7;
-    margin-left: 20px;
+    width: fit-content;
+    top: 36px;
+    background-color: var(--secondaryColor);
+    z-index: 1;
 }
 
-#form-trie ul {
+.sortingForm__ul {
     margin: 0;
     padding: 0;
 }
 
-#form-trie li {
+.sortingForm__li {
     padding: 0;
-}
-
-#form-trie label {
-    display: flex;
-    height: 36px;
-    width: 100%;
-    align-items: center;
-    color: var(--dark);
-    padding-left: 10px;
-}
-
-.form-trie-content {
-    display: none;
-    width: 140px;
-    position: absolute;
-    top: 36px;
-    background-color: var(--blue);
-    z-index: 1;
-}
-
-.form-trie-content li {
     display: block;
-    padding: 12px 16px;
     font-size: 20px;
     text-decoration: none;
     color: white;
+
+    &:hover {
+        background-color: hsla(209, 56%, 80%, 1);
+    }
 }
 
-.form-trie-content label:hover {
-    background-color: hsla(209, 56%, 80%, 1);
+.sortingForm__label {
+    display: flex;
+    padding: 0 10px;
+    height: 36px;
+    width: 140px;
+    align-items: center;
+    color: var(--dark);
 }
 
-.form-trie-content input {
+.sortingForm__input {
     display: none;
 }
 
-/* 1.2. vitrine - Disposition des produits
+/* 1.2. showcase shelfs - Products display
 ========================================================================= */
-.vitrine {
-    display: flex;
+.showcase__shelfs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     position: relative;
     grid-area: vitrine;
     flex-wrap: wrap;
     order: 2;
 }
 
-.produit {
-    width: 235px;
+.product {
     padding: 0 10px;
     margin-top: 40px;
 }
 
-.produit:hover {
-    transition: transform 0.2 s linear;
-    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
-    transform: translate(0%, -2%);
-    z-index: 2;
-}
-
-.div_imgProduit {
+.div__imgProduct {
     position: relative;
-    border-bottom: 2px solid var(--blue);
+    border-bottom: 2px solid var(--secondaryColor);
 }
 
-.img_produit {
+.img__product {
     width: 100%;
 }
 
-.rabais {
+.discount {
     display: flex;
     height: 60px;
     width: 60px;
@@ -419,7 +406,7 @@ Summary:
     align-items: center;
     justify-content: center;
     border-radius: 0 0 5px 5px;
-    background-color: var(--blue);
+    background-color: var(--secondaryColor);
 
     p {
         font-size: 22px;
@@ -428,67 +415,81 @@ Summary:
     }
 }
 
-.nouveau {
-    display: flex;
-    height: 32px;
-    width: 100px;
-    position: absolute;
-    top: 80%;
-    left: calc(50% - 50px);
-    align-items: center;
-    justify-content: center;
-    background-color: var(--blue);
-    font-size: 18px;
-    font-weight: 700;
-    color: white;
-}
-
-.produit_info {
+.product__data {
     padding: 0 5px;
 }
 
-.produit_nom {
+.product__name {
     min-height: 40px;
     margin: 10px 0;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.produit_marque {
+.product__brand {
     font-size: 12px;
     font-weight: 400;
     line-height: 10px;
+    color: var(--secondaryColor);
 }
 
-.div_dispo {
+// 1.2.1. div__available
+// ====================================== 
+
+.div__available {
     display: flex;
     align-items: center;
     margin-top: 10px;
+    position: relative;
 }
 
-.div_dispo p {
-    height: 8px;
-    font-size: 10px;
-    font-weight: 400;
-    padding-left: 10px;
-}
-
-.dispo_pastille {
+.available__chip {
     height: 12px;
     width: 12px;
     border-radius: 2px;
+
+    @mixin content() {
+        height: 8px;
+        font-size: 10px;
+        font-weight: 400;
+        padding-left: 20px;
+    }
+
+    &.is-green {
+
+        @include after($content: "En stock") {
+            @include content();
+        }
+    }
+
+    &.is-yellow {
+        @include after($content: "Stock faible") {
+            @include content();
+        }
+    }
+
+    &.is-red {
+        @include after($content: "Rupture de stock") {
+            @include content();
+        }
+    }
 }
 
-.produit_prix {
+.product__price {
     padding: 10px 0;
     font-size: 19px;
     font-weight: 700;
     text-align: right;
-    color: var(--blue);
+    color: var(--secondaryColor);
 }
 
-/* 1.3. vitrine - Pages bas
+/* 1.3. showcase - Bottom page selector
 ========================================================================= */
 .page_bas {
     display: grid;
@@ -504,11 +505,11 @@ Summary:
     margin: 40px 0;
     font-size: 18px;
     font-weight: 700;
-    color: var(--dark_blue);
+    color: var(--primaryColor);
     grid-area: page_bas_p;
 }
 
 .page_bas p a {
     text-decoration: none;
-    color: var(--dark_blue);
+    color: var(--primaryColor);
 }

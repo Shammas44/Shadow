@@ -1,0 +1,113 @@
+// ==========================================================================
+//   0. PLUS PETIT QUE 1180px
+// ==========================================================================
+@media (max-width: 1180px) {
+    .header__features {
+        display: none;
+    }
+
+    .main {
+        margin-top: var(--header__containerHeight);
+    }
+}
+
+// ==========================================================================
+//   1. PLUS PETIT QUE 992px
+// ==========================================================================
+@media (max-width: 992px) {
+    .showcase__shelfs {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+// ==========================================================================
+//   2. PLUS PETIT QUE 768px
+// ==========================================================================
+@media (max-width: 768px) {
+
+    main {
+        margin: calc(var(--headerHeight)*2) 0 20px 0;
+    }
+
+    // header__container
+    // ==========================================================================
+    .header__container {
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-areas:
+            ". . logo logo logo . ."
+            "sbar sbar sbar sbar sbar sbar sbar";
+        padding: 0 18px;
+        height: -webkit-fit-content;
+    }
+
+    .searchContainer {
+        margin: 0 0 $_columnGap 0;
+    }
+
+    // shop
+    // ==========================================================================
+    .shop {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filter {
+        height: 47px;
+    }
+
+    .filter__subTitle {
+        font-size: 1.2em;
+    }
+
+    .filter__list .container {
+        font-size: 1.2em;
+    }
+
+    .filter__ul li {
+        margin: 10px 0;
+    }
+}
+
+// ==========================================================================
+//   3. PLUS PETIT QUE 576px
+// ==========================================================================
+@media (max-width: 576px) {
+
+    // shop
+    // ==========================================================================
+    .showcase__shelfs {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .showcase__sorting {
+        grid-template-columns: 1fr;
+        height: fit-content;
+        justify-content: center;
+        row-gap: 10px;
+        padding: 10px 20px;
+    }
+
+    .showcase__sorting form {
+        max-width: unset;
+    }
+
+    .product {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .product * {
+        font-size: 1.05em;
+    }
+
+    .div__available {
+        margin-top: 20px;
+    }
+
+    .available__chip.is-green::before,
+    .available__chip.is-red::before,
+    .available__chip.is-yellow::before {
+        font-size: 0.8em;
+        top: -2px;
+    }
+}

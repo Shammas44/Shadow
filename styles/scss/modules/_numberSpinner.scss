@@ -1,0 +1,81 @@
+/* Aggressive reset to remove the initial spinner */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+input[type="number"]:hover::-webkit-inner-spin-button,
+input[type="number"]:hover::-webkit-outer-spin-button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+/* The component (also includes vertical) */
+.number-spinner-horizontal {
+    grid-area: quantityForm;
+}
+
+.spinner {
+    display: flex;
+    margin: $_columnGap 0 0 0;
+    height: 2rem;
+    width: 80%;
+}
+
+.spinner__button {
+    display: grid;
+    place-items: center;
+    border: none;
+    width: 25%;
+    border-color: var(--secondaryColor);
+    background-color: var(--secondaryColor);
+    font-size: 1em;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: background 0.4s ease;
+}
+
+.spinner__button:active {
+    border-color: var(--secondaryColor);
+}
+
+.spinner__button--left {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+.spinner__button--right {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+.spinner__input {
+    display: block;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    border-radius: none;
+    width: 50%;
+    font-size: 1em;
+    line-height: 1.5;
+    text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}

@@ -1,63 +1,156 @@
+//  Description: Mixines
+//  
+//  Summary:
+//  
+//  0. TEXTSTYLES
+//      - 0.1. base styles
+//      - 0.2. header styles
+//      - 0.3. footer styles
+//  1. BUTTON
+//  2. SEARCHBAR
+//  3. GRID
+//  4. ICONES
+
 // ==========================================================================
-//   0. BUTTON
+//   0. TEXTSTYLES
 // ==========================================================================
-@mixin button($height: 47px, $font_size: 18px) {
+@mixin style($extendName, $color: var(--primaryColor), $text_align: left) {
+    @extend %style_#{$extendName};
+    text-align: $text_align;
+    color: $color;
+    // Exemple: @include style("h1",white, center);
+}
+
+// 0.1. base styles
+// ==========================================================================
+%style_default {
+    font-size: 1.6rem;
+}
+
+%style_h1 {
+    font-size: 4.8rem;
+    font-weight: bold;
+}
+
+%style_h2 {
+    font-size: 3.2rem;
+    font-weight: bold;
+}
+
+%style_h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+%style_h3--alt {
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+
+%style_button {
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+
+// 0.2. header styles
+// ==========================================================================
+%style_searchBar {
+    font-size: 2.4rem;
+}
+
+%style_feature,
+%style_userName {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+%style_logoutSytle {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+// 0.3. footer styles
+// ==========================================================================
+%style_contactLink {
+    font-size: 1.9rem;
+}
+
+// ==========================================================================
+//   1. BUTTON
+// ==========================================================================
+@mixin button($height: $_buttonHeight, $justify_content: unset) {
+    @include style("h3", var(--dark), center);
     display: flex;
     height: $height;
     position: relative;
-    border-radius: $__border_radius;
-    background: var(--blue);
+    justify-content: $justify_content;
     border: none;
-    font-size: $font_size;
-    font-weight: 700;
-    color: white;
+    border-radius: $_border_radius;
+    background: var(--secondaryColor);
+    font-family: $_font_family;
     cursor: pointer;
-    box-shadow: $__button_box_shadow;
-    border-bottom: $__button_border_bottom;
+    box-shadow: $_button_box_shadow;
+    border-bottom: $_button_border_bottom;
+
+    &:active {
+        box-shadow: none;
+        border-bottom: none;
+    }
+
+    span {
+        @include style("button", var(--dark), center);
+    }
 }
 
-@mixin button_active {
-    box-shadow: none;
-    border-bottom: none;
-}
-
-@mixin squareButton($button_height: 47px) {
+@mixin squareButton($button_height: $_buttonHeight) {
     height: $button_height;
     width: $button_height;
     position: relative;
     border: none;
-    border-radius: 0 $__border_radius $__border_radius 0;
-    background: var(--blue);
+    border-radius: 0 $_border_radius $_border_radius 0;
+    background: var(--secondaryColor);
     cursor: pointer;
-    box-shadow: $__button_box_shadow;
-    border-bottom: $__button_border_bottom;
+    box-shadow: $_button_box_shadow;
+    border-bottom: $_button_border_bottom;
+
+    &:active {
+        box-shadow: none;
+        border-bottom: none;
+    }
 }
 
 // ==========================================================================
-//   1. SEARCHBAR
+//   2. SEARCHBAR
 // ==========================================================================
 
-@mixin searchbar($font_size: 24px) {
-    padding: 0 20px;
+@mixin input($font_size: 14px, $padding: 10px) {
+    padding: 0 $padding 0 $padding;
     border: none;
     background-color: white;
     font-size: $font_size;
     color: #1e1e1c;
     cursor: text;
+
+    &:focus {
+        padding: $padding/2;
+        box-sizing: border-box;
+        border-left: $padding/2 solid var(--secondaryColor);
+    }
 }
 
 // ==========================================================================
-//   2. GRID
+//   3. GRID
 // ==========================================================================
 
 @mixin grid($nbr_column: 15) {
     display: grid;
-    grid-template-columns: repeat($nbr_column, 60px);
-    grid-column-gap: 20px;
+    //grid-template-columns: repeat($nbr_column, $_columnWidth);
+    grid-template-columns: repeat($nbr_column, 1fr);
+    column-gap: $_columnGap;
 }
 
 // ==========================================================================
-//   3. ICONES
+//   4. ICONES
 // ==========================================================================
 
 @mixin icon($icon_width: 20px, $x: 0px, $y: 0px, $color: transparent) {
@@ -67,4 +160,20 @@
     background: url('../../images/spritesheet2.svg') -1*$x*$icon_width -1*$y*$icon_width $color;
     background-size: $icon_width*7;
     content: "";
+}
+
+@mixin before($content: '', $position: absolute) {
+    &::before {
+        @content;
+        position: $position;
+        content: $content;
+    }
+}
+
+@mixin after($content: '', $position: absolute) {
+    &::before {
+        @content;
+        position: $position;
+        content: $content;
+    }
 }

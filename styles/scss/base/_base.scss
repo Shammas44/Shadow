@@ -3,20 +3,18 @@
 }
 
 html {
-    min-height: 100%;
+    height: 100%;
     box-sizing: border-box;
-    background-color: var(--dark_blue);
+    background-color: var(--primaryColor);
+    font-family: $_font_family;
+    font-size: $_htmlFont_size;
+    color: var(--primaryColor);
 }
 
 body {
-    min-height: 100vh;
-    position: relative;
-    font-family: 'Arimo', "Helvetica Neue", Arial, sans-serif;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    color: rgb(30, 60, 90);
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     margin: 0px;
     background-color: white;
 }
@@ -28,20 +26,32 @@ body {
 }
 
 main {
-    flex: 1;
-    margin-top: 204px;
-    margin-bottom: 350px;
+    margin: var(--headerHeight) auto 20px auto;
     background-color: white;
 }
 
+h1 {
+    @include style("h1", inherit, center);
+}
+
+h2 {
+    @include style("h2", inherit);
+}
+
 h3 {
-    color: white;
     padding: 20px 0 0 0;
-    font-weight: 700;
-    font-size: 18px;
+    @include style("h3", white);
 }
 
 a {
     text-decoration: none;
-    color: var(--dark_blue);
+    color: var(--primaryColor);
+}
+
+// ==========================================================================
+//   0. COMMON CLASS
+// ==========================================================================
+
+.button {
+    @include button();
 }
