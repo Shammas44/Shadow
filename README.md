@@ -1,4 +1,4 @@
-# Mon projet personnel
+# Shadow c'est quoi ?
 Un site web single page permettant de filtrer des produits à la manière d'un site e-commerce. J'ai commencé ce projet en 2019 dans le but d'apprendre PHP sur mon temps libre. 
 
 ## Fonctionalités
